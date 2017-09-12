@@ -1,4 +1,4 @@
-import StyleSheet from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     regular: {
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         color: 'white',
         margin: 50,
     },
-    natigator: {
+    navigator: {
         flex: 1
     },
     centering: {
