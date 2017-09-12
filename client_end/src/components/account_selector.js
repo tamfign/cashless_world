@@ -10,10 +10,12 @@ var SCREEN_HEIGHT = Dimensions.get('window').height;
 var SWIPE_RELEASE_POINT = 70;
 
 export default class AccountSelector extends React.Component {
-	getInitialState() {
-		return {
+	constructor() {
+		super();
+
+		this.state = {
 			accounts: accountsData
-		};
+		}
 	}
 
 	render(){

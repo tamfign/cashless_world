@@ -16,11 +16,13 @@ export default class QuickPayForm extends React.Component {
 
 	componentDidMount() {}
 
-	getInitialState() {
-		return {
+	constructor() {
+		super();
+
+		this.state = {
 			name: 'Select Payee',
 			image: undefined
-		};
+		}
 	}
 
 	openContacts() {

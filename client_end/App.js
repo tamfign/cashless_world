@@ -14,8 +14,8 @@ export default class App extends React.Component {
 		super();
 
 		this.state = {
-			selectedTab : 'account',
-			notifCount : 1
+			selectedTab : 'quickpay',
+			notifCount : 0
 		};
 	}
 
@@ -36,7 +36,7 @@ export default class App extends React.Component {
 					title="Quick Pay"
 					selected={this.state.selectedTab === 'quickpay'}
 					onPress={() => {
-						this.setState({slectedTab : 'quickpay'})
+						this.setState({selectedTab : 'quickpay'})
 					}}>
 
 					<View style={styles.navigator}>
