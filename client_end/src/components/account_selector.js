@@ -1,9 +1,10 @@
+import React from 'react';
 import { TouchableHighlight, NavigatorIOS, View, Text } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Dimensions from 'Dimensions';
 import styles from '../styles';
 
-var accountsData = require('../data/accounts.json');
+var accountsData = require('../../data/accounts.json');
 var SCREEN_WIDTH = Dimensions.get('window').width;
 var SCREEN_HEIGHT = Dimensions.get('window').height;
 var SWIPE_RELEASE_POINT = 70;
@@ -15,7 +16,7 @@ export default class AccountSelector extends React.Component {
 		};
 	}
 
-	render: function(){
+	render(){
 		return (
 			<View style={{marginTop: 64, backgroundColor: '#ECF1F2'}}>
 

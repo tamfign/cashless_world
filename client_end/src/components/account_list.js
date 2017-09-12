@@ -1,14 +1,18 @@
+import React from 'react';
 import { TouchableHighlight, ListView, View, Text } from 'react-native';
 
 import styles from '../styles';
-import Transactions from './transactions';
+import Transactions from './transaction';
 
 export default class AccountList extends React.Component {
-	getInitialState() {
+
+	constructor() {
+		super();
+
 		var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id});
-		return {
-			dataSource: ds.cloneWithRows(require('../data/accounts.json')),
-		};
+		this.state = {
+			dataSource: ds.cloneWithRows(require('../../data/accounts.json')),
+		}
 	}
 
 	selectAccount(account) {

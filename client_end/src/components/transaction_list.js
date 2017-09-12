@@ -1,14 +1,18 @@
+import React from 'react';
 import { TouchableHighlight, NavigatorIOS, ScrollView, ListView, TouchableWithoutFeedback, Image, TextInput, View, Text } from 'react-native';
 import styles from '../styles';
 
 var colors = ['#bc6412', '#b63c24', '#c12121', '#423c35', '#e35a2d', '#eb7d17', '#fabb1b', '#ffd900', '#b6c320', '#76b812', '#13a581', '#1281ab', '#344cb4', '#70279b', '#9b277e', '#d51371', '#ccae00', '#c89616'];
 
 export default class TransactionList extends React.Component {
-	getInitialState() {
+
+	constructor() {
+		super();
+
 		var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id});
-		return {
-			dataSource: ds.cloneWithRows(require('../data/transactions.json')),
-		};
+		this.state = {
+			dataSource: ds.cloneWithRows(require('../../data/transactions.json')),
+		}
 	}
 
 	render() {

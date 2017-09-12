@@ -1,8 +1,9 @@
+import React from 'react';
 import  { TouchableHighlight, NavigatorIOS, ScrollView, TouchableWithoutFeedback, Image, TextInput, View, Text } from 'react-native';
 
 import styles from '../styles';
-import AccountSelector from 'account_selector';
-import Contacts from 'contacts';
+import AccountSelector from './account_selector';
+import Contacts from './contacts';
 
 export default class QuickPayForm extends React.Component {
 	selectContactCallback(contact) {
@@ -15,10 +16,10 @@ export default class QuickPayForm extends React.Component {
 
 	componentDidMount() {}
 
-	getInitialState: function () {
+	getInitialState() {
 		return {
 			name: 'Select Payee',
-			image: require('image!NoPhoto')
+			image: undefined
 		};
 	}
 

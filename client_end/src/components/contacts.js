@@ -1,3 +1,4 @@
+import React from 'react';
 import { TouchableHighlight, ListView, ActivityIndicatorIOS, View, Text, NativeModules } from 'react-native';
 import { AddressBook } from 'NativeModules';
 import styles from '../styles';

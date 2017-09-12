@@ -4384,9 +4384,17 @@ react-devtools-core@2.3.1:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-addressbook@^0.1.1:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/react-native-addressbook/-/react-native-addressbook-0.1.3.tgz#ee07976b476e1b571749c102090a0b8085a494ca"
+
 react-native-branch@2.0.0-beta.3:
   version "2.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.0.0-beta.3.tgz#2167af86bbc9f964bd45bd5f37684e5b54965e32"
+
+react-native-camera@^0.2.5:
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-0.2.11.tgz#ecaf571b3cf8fc1b60592760b02b31ed40cd015e"
 
 react-native-gesture-handler@^1.0.0-alpha.14:
   version "1.0.0-alpha.19"
@@ -4427,6 +4435,12 @@ react-native-svg@5.3.0:
   dependencies:
     color "^0.11.1"
     lodash "^4.16.6"
+
+react-native-swiper@^1.3.0:
+  version "1.5.12"
+  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.12.tgz#fe040e19d936304013f1671dd83f7e25ee3c4d83"
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-vector-icons@4.1.1:
   version "4.1.1"
@@ -5654,7 +5668,7 @@ webidl-conversions@^4.0.0:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
 
-"websql@github:expo/node-websql#18.0.0":
+websql@expo/node-websql#18.0.0:
   version "0.4.4"
   resolved "https://codeload.github.com/expo/node-websql/tar.gz/e364fa65146a9e2157a19e5c719e7702c2b6b87a"
   dependencies:
