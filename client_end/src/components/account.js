@@ -1,5 +1,4 @@
-import React from 'react-native';
-import { NavigatorIOS } = React;
+import { NavigatorIOS } from 'react-native';
 
 import styles from '../styles';
 import AccountsList from './account_list';
