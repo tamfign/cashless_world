@@ -56,7 +56,7 @@ export default class QuickPayForm extends React.Component {
 
 					<TextInput
 						keyboardType="decimal-pad"
-						placeholder="€"
+						placeholder="$"
 						style={{height: 50, marginTop: 15, borderColor: '#eee', borderWidth: 1, padding: 15}}
 						onChangeText={(text) => this.setState({input: text})}
 					/>

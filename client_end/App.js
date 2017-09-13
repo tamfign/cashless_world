@@ -23,6 +23,7 @@ export default class App extends React.Component {
 		return (
 			<TabBarIOS tintColor="black" barTintColor="#3abeff">
 				<TabBarIOS.Item
+					icon={require('./img/accounts.png')}
 					title="Account"
 					badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
 					selected={this.state.selectedTab === 'account'}
@@ -33,6 +34,7 @@ export default class App extends React.Component {
 				</TabBarIOS.Item>
 
 				<TabBarIOS.Item
+					icon={require('./img/quickpay.png')}
 					title="Quick Pay"
 					selected={this.state.selectedTab === 'quickpay'}
 					onPress={() => {
