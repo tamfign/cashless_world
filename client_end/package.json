@@ -24,6 +24,7 @@
     "react-native": "^0.47.0",
     "react-native-addressbook": "^0.1.1",
     "react-native-camera": "^0.2.5",
-    "react-native-swiper": "^1.3.0"
+    "react-native-swiper": "^1.3.0",
+    "react-native-credit-card-input": "./react-native-credit-card-input"
   }
 }
