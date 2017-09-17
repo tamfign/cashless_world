@@ -2,18 +2,16 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     regular: {
-        fontFamily: 'OpenSans'
     },
     semibold: {
-        fontFamily: 'OpenSans-Semibold'
+        fontWeight: 'bold',
     },
 
     light: {
-        fontFamily: 'OpenSans-Light'
     },
 
     bold: {
-        fontFamily: 'OpenSans-Bold'
+        fontWeight: 'bold',
     },
     tabContent: {
         flex: 1,

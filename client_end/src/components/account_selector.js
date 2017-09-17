@@ -26,6 +26,7 @@ export default class AccountSelector extends React.Component {
 					{this.state.accounts.map((acc) => {
 						return (
 						<View
+							key={acc.accountNumber}
 							style={{
 								flex: 1,
 								width: SCREEN_WIDTH,
