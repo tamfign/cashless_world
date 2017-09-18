@@ -56,23 +56,11 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: "black",
     },
-    slide1: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#9DD6EB',
-    },
-    slide2: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#97CAE5',
-    },
-    slide3: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#92BBD9',
+    touchable: {
+	backgroundColor: '#009DE0',
+	padding: 15,
+	marginTop: 50,
+	alignItems: 'center'
     },
 });
 

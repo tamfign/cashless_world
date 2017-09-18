@@ -1,7 +1,8 @@
 import React from 'react';
-import  { TouchableHighlight, NavigatorIOS,  TextInput, View, Text } from 'react-native';
+import  { Button, TouchableHighlight, NavigatorIOS,  TextInput, View, Text } from 'react-native';
 
 import styles from '../styles';
+import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 
 export default class QuickGetForm extends React.Component {
 	render() {
@@ -27,12 +28,27 @@ class QuickGet extends React.Component {
 		}
 	}
 
+	showDialog() {
+		this.popupDialog.show();
+	}
+
 	render() {
 		return (
 			<View style={{flex: 1, alignItems: 'stretch', justifyContent: 'center'}}>
-				<TouchableHighlight underlayColor="#00BBFC" style={{backgroundColor: '#009DE0', padding: 15, marginTop: 50, alignItems: 'center'}}>
+				<TouchableHighlight
+					underlayColor="#00BBFC"
+					style={styles.touchable}
+					onPress={this.showDialog.bind(this)}>
 					<Text style={[styles.semibold, {color: '#fff'}]}>GET</Text>
 				</TouchableHighlight>
+				<PopupDialog
+					ref={(popupDialog) => {
+						this.popupDialog = popupDialog;
+					}}
+					dialogAnimation = { new SlideAnimation({ slideFrom: 'bottom' })}
+				>
+					<View><Text>Success!</Text></View>
+				</PopupDialog>
 			</View>
 		)
 	}
