@@ -12,12 +12,15 @@ const styles = StyleSheet.create({
 
     bold: {
         fontWeight: 'bold',
+        marginLeft: 10,
+        fontSize: 20,
     },
     title: {
         fontWeight: 'bold',
         fontSize: 30,
         textAlign: 'center',
-        margin: 50,
+        marginTop: 50,
+        marginBottom: 60,
     },
     tabContent: {
         flex: 1,
