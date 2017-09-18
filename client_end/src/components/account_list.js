@@ -48,10 +48,13 @@ export default class AccountList extends React.Component {
 
 	render() {
 		return (
+			<View>
+			<Text style={styles.title}> Account List </Text>
 			<ListView
 				style={[{backgroundColor: '#E5E8E8'}]}
 				dataSource={this.state.dataSource}
 				renderRow={this.renderRow} />
+			</View>
 		)
 	}
 }

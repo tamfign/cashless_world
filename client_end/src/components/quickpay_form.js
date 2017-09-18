@@ -9,7 +9,6 @@ export default class QuickPayForm extends React.Component {
 	selectContactCallback(contact) {
 		var image = {uri: contact.thumbnailPath}
 		this.setState({
-			name: contact.firstName + ' ' + contact.lastName,
 			image: (contact.thumbnailPath.length) && image || this.defaultImage
 		})
 	}
@@ -20,7 +19,6 @@ export default class QuickPayForm extends React.Component {
 		super();
 
 		this.state = {
-			name: 'Select Payee',
 			image: undefined
 		}
 	}
@@ -51,7 +49,6 @@ export default class QuickPayForm extends React.Component {
 					</TouchableWithoutFeedback>
 
 					<Text style={[styles.semibold, {color: '#666', alignSelf: 'center'}]}>
-							{this.state.name}
 					</Text>
 
 					<TextInput

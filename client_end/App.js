@@ -5,8 +5,6 @@ import NativeModules from 'NativeModules';
 
 import Account from './src/components/account';
 import QuickPay from './src/components/quickpay';
-import AddCard from './src/components/add_card';
-import Transaction from './src/components/transaction';
 import styles from './src/styles';
 
 export default class App extends React.Component {
@@ -44,19 +42,6 @@ export default class App extends React.Component {
 
 					<View style={styles.navigator}>
 						<QuickPay />
-					</View>
-				</TabBarIOS.Item>
-
-				<TabBarIOS.Item
-					icon={require('./img/quickpay.png')}
-					title="Add New Card"
-					selected={this.state.selectedTab === 'card'}
-					onPress={() => {
-						this.setState({selectedTab : 'card'})
-					}}>
-
-					<View style={styles.navigator}>
-						<AddCard />
 					</View>
 				</TabBarIOS.Item>
 			</TabBarIOS>
