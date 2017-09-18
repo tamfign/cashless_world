@@ -1,15 +1,15 @@
 [
     {
         "id": 1,
-        "alias": "Current Account",
-        "accountNumber": "001235",
+        "name": "Andrew Yang",
+        "accountNumber": "45098888888888888",
         "balance": "$ 1.389,20"
     },
 
     {
         "id": 2,
-        "alias": "Savings",
-        "accountNumber": "001234",
+        "name": "Bill Xia",
+        "accountNumber": "45098888888889999",
         "balance": "$ 21.884,00"
     }
 ]

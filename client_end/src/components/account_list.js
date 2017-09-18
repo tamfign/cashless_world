@@ -29,14 +29,10 @@ export default class AccountList extends React.Component {
 			<View>
 				<View style={{flexDirection: 'row', padding: 10, backgroundColor: '#fff'}}>
 					<View style={{flex: 1}}>
-						<Text style={styles.semibold}>{rowData.alias}</Text>
+						<Text style={styles.semibold}>{rowData.name}</Text>
 						<Text style={[styles.light, {color: '#666', fontSize: 12}]}>
-							{rowData.accountNumber}
+							{ "**** **** ***** " + rowData.accountNumber.substr(rowData.accountNumber.length - 4) }
 						</Text>
-					</View>
-
-					<View>
-						<Text style={[styles.semibold]}>{rowData.balance}</Text>
 					</View>
 				</View>
 
