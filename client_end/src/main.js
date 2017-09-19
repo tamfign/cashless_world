@@ -1,50 +1,104 @@
-import React from 'react';
-import { StyleSheet, TabBarIOS, StatusBarIOS, Image, Text, View } from 'react-native';
-import Swiper from 'react-native-swiper';
-import NativeModules from 'NativeModules';
+import React, { Component } from 'react';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 
-import Account from './components/account';
-import QuickPay from './components/quickpay';
-import styles from './styles';
+import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 
-export default class App extends React.Component {
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null
+    };
+  }
 
-	constructor() {
-		super();
+  componentDidMount() {
+    this._setupGoogleSignin();
+  }
 
-		this.state = {
-			selectedTab : 'quickpay',
-			notifCount : 0
-		};
-	}
+  render() {
+    if (!this.state.user) {
+      return (
+        <View style={styles.container}>
+          <GoogleSigninButton style={{width: 212, height: 48}} size={GoogleSigninButton.Size.Standard} color={GoogleSigninButton.Color.Auto} onPress={this._signIn.bind(this)}/>
+        </View>
+      );
+    }
 
-	render() {
-		return (
-			<TabBarIOS tintColor="black" barTintColor="#3abeff">
-				<TabBarIOS.Item
-					icon={require('../img/accounts.png')}
-					title="Account"
-					badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
-					selected={this.state.selectedTab === 'account'}
-					onPress={() => {
-						this.setState({selectedTab : 'account'});
-					}}>
-					<Account/>
-				</TabBarIOS.Item>
+    if (this.state.user) {
+      return (
+        <View style={styles.container}>
+          <Text style={{fontSize: 18, fontWeight: 'bold', marginBottom: 20}}>Welcome {this.state.user.name}</Text>
+          <Text>Your email is: {this.state.user.email}</Text>
 
-				<TabBarIOS.Item
-					icon={require('../img/quickpay.png')}
-					title="Quick Pay"
-					selected={this.state.selectedTab === 'quickpay'}
-					onPress={() => {
-						this.setState({selectedTab : 'quickpay'})
-					}}>
+          <TouchableOpacity onPress={() => {this._signOut(); }}>
+            <View style={{marginTop: 50}}>
+              <Text>Log out</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+  }
 
-					<View style={styles.navigator}>
-						<QuickPay />
-					</View>
-				</TabBarIOS.Item>
-			</TabBarIOS>
-		);
-	}
+  async _setupGoogleSignin() {
+    try {
+      await GoogleSignin.hasPlayServices({ autoResolve: true });
+      await GoogleSignin.configure({
+        iosClientId: '603421766430-mjg34tcspqcio7eld8hu4djv5vjdvtsr.apps.googleusercontent.com',
+        webClientId: '603421766430-60og8n04mebic8hi49u1mrcmcdmugnd5.apps.googleusercontent.com',
+        offlineAccess: false
+      });
+
+      const user = await GoogleSignin.currentUserAsync();
+      console.log(user);
+      this.setState({user});
+    }
+    catch(err) {
+      console.log("Google signin error", err.code, err.message);
+    }
+  }
+
+  _signIn() {
+    GoogleSignin.signIn()
+    .then((user) => {
+      console.log(user);
+      this.setState({user: user});
+    })
+    .catch((err) => {
+      console.log('WRONG SIGNIN', err);
+    })
+    .done();
+  }
+
+  _signOut() {
+    GoogleSignin.revokeAccess().then(() => GoogleSignin.signOut()).then(() => {
+      this.setState({user: null});
+    })
+    .done();
+  }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+});
