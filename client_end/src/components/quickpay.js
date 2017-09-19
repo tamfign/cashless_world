@@ -1,19 +1,17 @@
 import React from 'react';
-import { NavigatorIOS } from 'react-native';
+import { NavigatorIOS, View } from 'react-native';
 
 import QuickPayForm from './quickpay_form';
 import QuickGetForm from './quickget_form';
 
-import Swiper from 'react-native-swiper';
 import styles from '../styles';
+import Swiper from 'react-native-page-swiper';
 
 export default class QuickPay extends React.Component {
 	render() {
 		return (
 			<Swiper
-				style={styles.wrapper}
-				showsButtons
-				index={1}>
+				style={styles.wrapper} >
 				<QuickPayForm />
 				<QuickGetForm />
 			</Swiper>
