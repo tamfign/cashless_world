@@ -3,9 +3,9 @@ import { StyleSheet, TabBarIOS, StatusBarIOS, Image, Text, View } from 'react-na
 import Swiper from 'react-native-swiper';
 import NativeModules from 'NativeModules';
 
-import Account from './src/components/account';
-import QuickPay from './src/components/quickpay';
-import styles from './src/styles';
+import Account from './components/account';
+import QuickPay from './components/quickpay';
+import styles from './styles';
 
 export default class App extends React.Component {
 
@@ -22,7 +22,7 @@ export default class App extends React.Component {
 		return (
 			<TabBarIOS tintColor="black" barTintColor="#3abeff">
 				<TabBarIOS.Item
-					icon={require('./img/accounts.png')}
+					icon={require('../img/accounts.png')}
 					title="Account"
 					badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
 					selected={this.state.selectedTab === 'account'}
@@ -33,7 +33,7 @@ export default class App extends React.Component {
 				</TabBarIOS.Item>
 
 				<TabBarIOS.Item
-					icon={require('./img/quickpay.png')}
+					icon={require('../img/quickpay.png')}
 					title="Quick Pay"
 					selected={this.state.selectedTab === 'quickpay'}
 					onPress={() => {
