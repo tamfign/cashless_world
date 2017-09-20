@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, TabBarIOS, StatusBarIOS, Image, Text, View } from 'react-native';
-import Swiper from 'react-native-swiper';
 import NativeModules from 'NativeModules';
 
 import Account from './components/account';

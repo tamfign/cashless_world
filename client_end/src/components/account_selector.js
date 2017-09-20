@@ -1,6 +1,5 @@
 import React from 'react';
 import { TouchableHighlight, NavigatorIOS, View, Text } from 'react-native';
-import Swiper from 'react-native-swiper';
 import Dimensions from 'Dimensions';
 import styles from '../styles';
 
