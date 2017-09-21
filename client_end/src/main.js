@@ -1,49 +1,62 @@
 import React from 'react';
-import { StyleSheet, TabBarIOS, StatusBarIOS, Image, Text, View } from 'react-native';
-import NativeModules from 'NativeModules';
-
-import Account from './components/account';
-import QuickPay from './components/quickpay';
-import styles from './styles';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  TouchableHighlight
+} from 'react-native';
+import { FacebookLoginManager } from 'NativeModules';
 
 export default class App extends React.Component {
+  constructor() {
+	super();
+	this.state = {
+		result: '...'
+	};
+  }
 
-	constructor() {
-		super();
+  login() {
+    FacebookLoginManager.newSession((error, info) => {
+	if (error) {
+        this.setState({result: error});
+      } else {
+        this.setState({result: info['token']});
+      }
+    });
+  }
 
-		this.state = {
-			selectedTab : 'quickpay',
-			notifCount : 0
-		};
-	}
-
-	render() {
-		return (
-			<TabBarIOS tintColor="black" barTintColor="#3abeff">
-				<TabBarIOS.Item
-					icon={require('../img/accounts.png')}
-					title="Account"
-					badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
-					selected={this.state.selectedTab === 'account'}
-					onPress={() => {
-						this.setState({selectedTab : 'account'});
-					}}>
-					<Account/>
-				</TabBarIOS.Item>
-
-				<TabBarIOS.Item
-					icon={require('../img/quickpay.png')}
-					title="Quick Pay"
-					selected={this.state.selectedTab === 'quickpay'}
-					onPress={() => {
-						this.setState({selectedTab : 'quickpay'})
-					}}>
-
-					<View style={styles.navigator}>
-						<QuickPay />
-					</View>
-				</TabBarIOS.Item>
-			</TabBarIOS>
-		);
-	}
+  render() {
+    return (
+      <View style={styles.container}>
+        <TouchableHighlight onPress={this.login.bind(this)}>
+          <Text style={styles.welcome}>
+            Facebook Login
+          </Text>
+        </TouchableHighlight>
+        <Text style={styles.instructions}>
+          {this.state.result}
+        </Text>
+      </View>
+    );
+  }
 }
+
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+});

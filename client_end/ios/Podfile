@@ -6,7 +6,6 @@ target 'client_end' do
   # use_frameworks!
 
   # Pods for client_end
-  pod 'Google/SignIn'
 
   target 'client_end-tvOSTests' do
     inherit! :search_paths
