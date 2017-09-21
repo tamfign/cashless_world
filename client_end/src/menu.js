@@ -7,6 +7,9 @@ import QuickPay from './components/quickpay';
 import styles from './styles';
 
 export default class Menu extends React.Component {
+	static navigationOptions = {
+		headerLeft:null
+	}
 
 	constructor() {
 		super();
