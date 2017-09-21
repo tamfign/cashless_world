@@ -6,7 +6,7 @@ import Account from './components/account';
 import QuickPay from './components/quickpay';
 import styles from './styles';
 
-export default class App extends React.Component {
+export default class Menu extends React.Component {
 
 	constructor() {
 		super();

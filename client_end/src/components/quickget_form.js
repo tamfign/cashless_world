@@ -34,7 +34,7 @@ class QuickGet extends React.Component {
 
 	render() {
 		return (
-			<View style={{flex: 1, alignItems: 'stretch', justifyContent: 'center'}}>
+			<View style={styles.center_container}>
 				<TouchableHighlight
 					underlayColor="#00BBFC"
 					style={styles.touchable}

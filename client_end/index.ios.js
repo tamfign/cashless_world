@@ -1,4 +1,12 @@
 import { AppRegistry } from 'react-native';
-import App from './src/main';
+import { StackNavigator } from 'react-navigation';
+
+import Login from './src/login';
+import Menu from './src/menu';
+
+var App = StackNavigator({
+	Login: { screen: Login },
+	Menu: { screen: Menu },
+});
 
 AppRegistry.registerComponent('client_end', () => App);

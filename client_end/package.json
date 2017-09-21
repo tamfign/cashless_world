@@ -12,7 +12,8 @@
     "react-native": "0.48.3",
     "react-native-credit-card-input": "^0.3.3",
     "react-native-page-swiper": "^0.3.0",
-    "react-native-popup-dialog": "^0.9.35"
+    "react-native-popup-dialog": "^0.9.35",
+    "react-navigation": "^1.0.0-beta.11"
   },
   "devDependencies": {
     "babel-jest": "21.0.2",

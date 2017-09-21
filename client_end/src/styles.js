@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     container: {
-        backgroundColor: "#F5F5F5",
+	backgroundColor: '#F5FCFF',
         marginTop: 100,
     },
     label: {
@@ -62,6 +62,26 @@ const styles = StyleSheet.create({
 	marginTop: 50,
 	alignItems: 'center'
     },
+    instructions: {
+	textAlign: 'center',
+	color: '#333333',
+	marginBottom: 5,
+    },
+    welcome: {
+	height: 50,
+	fontSize: 40,
+	fontFamily: 'Gill Sans',
+	textAlign: 'center',
+	color: '#ffffff',
+	opacity: 0.8,
+	justifyContent: 'center',
+	backgroundColor: '#3b5998'
+    },
+    center_container: {
+	flex: 1,
+	alignItems: 'stretch',
+	justifyContent: 'center'
+    }
 });
 
 module.exports = styles;
