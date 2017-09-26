@@ -71,5 +71,7 @@
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 	</array>
+	<key>NFCReaderUsageDescription</key>
+	<string>Ready to use NFC 🚀</string>
 </dict>
 </plist>
