@@ -1,0 +1,3 @@
+rootProject.name = 'trans'
+
+include ':app'
