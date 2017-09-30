@@ -3,3 +3,4 @@ node_modules/
 npm-debug.*
 ios/build
 ios/client_end.xcworkspace/xcuserdata/
+ios/client_end.xcodeproj/project.xcworkspace/xcuserdata/
