@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigatorIOS, View } from 'react-native';
+import { View } from 'react-native';
 
 import QuickPayForm from './quickpay_form';
 import QuickGetForm from './quickget_form';

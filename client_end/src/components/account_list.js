@@ -1,24 +1,11 @@
 import React from 'react';
-import { NavigatorIOS, TouchableHighlight, ListView, View, Text } from 'react-native';
+import { TouchableHighlight, ListView, View, Text } from 'react-native';
 
 import styles from '../styles';
 import Transactions from './transaction';
+import NavigationBar from 'react-native-navbar';
 
 export default class AccountList extends React.Component {
-	render() {
-	return (
-		<NavigatorIOS
-			ref="accounts"
-			style={styles.navigator}
-			initialRoute={{
-				component: Account,
-				title: 'Account List'
-			}}
-		/>
-	);}
-}
-
-class Account extends React.Component {
 
 	constructor() {
 		super();
@@ -58,10 +45,15 @@ class Account extends React.Component {
 
 	render() {
 		return (
+			<View style={styles.container}>
+			<NavigationBar
+				title={{ title: 'Account List' }}
+			/>
 			<ListView
 				style={[{backgroundColor: '#E5E8E8'}]}
 				dataSource={this.state.dataSource}
 				renderRow={this.renderRow} />
+			</View>
 		)
 	}
 }

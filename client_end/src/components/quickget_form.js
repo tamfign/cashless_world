@@ -1,28 +1,15 @@
 import React from 'react';
-import  { Button, Platform, TouchableHighlight, NavigatorIOS,  TextInput, View, Text } from 'react-native';
+import  { Button, Platform, TouchableHighlight, TextInput, View, Text } from 'react-native';
 import base64 from 'base-64';
 import styles from '../styles';
 import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
-
-export default class QuickGetForm extends React.Component {
-	render() {
-	return (
-		<NavigatorIOS
-			ref="quickget"
-			style={styles.navigator}
-			initialRoute={{
-				component: QuickGet,
-				title: 'Quick Get'
-			}}
-		/>
-	);}
-}
+import NavigationBar from 'react-native-navbar';
 
 if (Platform.OS == 'ios') {
 	const  NFCNDEFReaderSession = require('react-native-nfc-ios');
 }
 
-class QuickGet extends React.Component {
+export default class QuickGetForm extends React.Component {
 
 	constructor() {
 		super();
@@ -49,6 +36,9 @@ class QuickGet extends React.Component {
 	render() {
 		return (
 			<View style={styles.center_container}>
+				<NavigationBar
+					title={{ title: 'Quick Get' }}
+				/>
 				<TouchableHighlight
 					underlayColor="#00BBFC"
 					style={styles.touchable}

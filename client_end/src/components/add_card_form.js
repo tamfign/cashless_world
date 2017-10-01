@@ -1,24 +1,10 @@
 import React from 'react';
-import { NavigatorIOS, View, Text, Button } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import styles from '../styles';
-
+import NavigationBar from 'react-native-navbar';
 import { CreditCardInput } from 'react-native-credit-card-input';
 
 export default class AddCardForm extends React.Component {
-	render() {
-	return (
-		<NavigatorIOS
-			ref="addcard"
-			style={styles.navigator}
-			initialRoute={{
-				component: AddCard,
-				title: 'Add New Card'
-			}}
-		/>
-	);}
-}
-
-class AddCard extends React.Component {
 
 	constructor() {
 		super();
@@ -38,6 +24,9 @@ class AddCard extends React.Component {
 	render() {
 	return (
 		<View style={styles.container}>
+			<NavigationBar
+				title={{ title: 'Add New Card' }}
+			/>
 			<CreditCardInput
 				requiresCVC
 				requiresName

@@ -1,23 +1,9 @@
 import React from 'react';
-import  { TouchableHighlight, NavigatorIOS,  TextInput, View, Text } from 'react-native';
-
+import { TouchableHighlight, TextInput, View, Text } from 'react-native';
+import NavigationBar from 'react-native-navbar';
 import styles from '../styles';
 
 export default class QuickPayForm extends React.Component {
-	render() {
-	return (
-		<NavigatorIOS
-			ref="quickpay"
-			style={styles.navigator}
-			initialRoute={{
-				component: QuickPay,
-				title: 'Quick Pay'
-			}}
-		/>
-	);}
-}
-
-class QuickPay extends React.Component {
 
 	constructor() {
 		super();
@@ -30,6 +16,9 @@ class QuickPay extends React.Component {
 	render() {
 		return (
 			<View style={{flex: 1, alignItems: 'stretch', justifyContent: 'center'}}>
+				<NavigationBar
+					title={{ title: 'Quick Pay'}}
+				/>
 				<Text style={styles.bold}>Amount:</Text>
 				<TextInput
 					keyboardType="decimal-pad"

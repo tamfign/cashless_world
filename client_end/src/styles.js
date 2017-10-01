@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     container: {
+        flex: 1,
 	backgroundColor: '#F5FCFF',
         marginTop: 100,
     },
