@@ -7,6 +7,8 @@ import NavigationBar from 'react-native-navbar';
 
 if (Platform.OS == 'ios') {
 	const  NFCNDEFReaderSession = require('react-native-nfc-ios');
+} else {
+	const readTag = require('nfc-react-native');
 }
 
 export default class QuickGetForm extends React.Component {
@@ -24,7 +26,11 @@ export default class QuickGetForm extends React.Component {
 	}
 
 	async readTag() {
-		const messages = await NFCNDEFReaderSession.readTag();
+		if (Platform.OS == 'ios') {
+			const message = await NFCNDEFReaderSession.readTag();
+		} else {
+			const message = await readTag();
+		}
 		const payloadB64 = messages[0].records[0].payload;
 
 		this.state = {
