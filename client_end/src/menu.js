@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, TabBarIOS, StatusBarIOS, Image, Text, View } from 'react-native';
+import { StyleSheet, Image, Text, View } from 'react-native';
 import NativeModules from 'NativeModules';
+import TabNavigator from 'react-native-tab-navigator';
 
 import Account from './components/account';
 import QuickPay from './components/quickpay';
@@ -16,15 +17,14 @@ export default class Menu extends React.Component {
 
 		this.state = {
 			selectedTab : 'quickpay',
-			notifCount : 0
 		};
 	}
 
 	render() {
 		return (
-			<TabBarIOS tintColor="black" barTintColor="#3abeff">
-				<TabBarIOS.Item
-					icon={require('../img/accounts.png')}
+			<TabNavigator tintColor="black" barTintColor="#3abeff">
+				<TabNavigator.Item
+					renderIcon={() => <Image source={require('../img/accounts.png')} />}
 					title="Account"
 					badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
 					selected={this.state.selectedTab === 'account'}
@@ -32,10 +32,10 @@ export default class Menu extends React.Component {
 						this.setState({selectedTab : 'account'});
 					}}>
 					<Account/>
-				</TabBarIOS.Item>
+				</TabNavigator.Item>
 
-				<TabBarIOS.Item
-					icon={require('../img/quickpay.png')}
+				<TabNavigator.Item
+					renderIcon={() => <Image source={require('../img/quickpay.png')} />}
 					title="Quick Pay"
 					selected={this.state.selectedTab === 'quickpay'}
 					onPress={() => {
@@ -45,8 +45,8 @@ export default class Menu extends React.Component {
 					<View style={styles.navigator}>
 						<QuickPay />
 					</View>
-				</TabBarIOS.Item>
-			</TabBarIOS>
+				</TabNavigator.Item>
+			</TabNavigator>
 		);
 	}
 }

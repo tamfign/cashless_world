@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -508,6 +507,7 @@
 				A4429CC7C50E41F188F4C033 /* Frameworks */,
 				2C1A8B4B779F354B25365D8C /* Pods */,
 				73D5EE7F1F7B3967008DC394 /* Recovered References */,
+				669B9C37AD084EDCAE3B6766 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -543,6 +543,14 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		669B9C37AD084EDCAE3B6766 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -1031,6 +1039,9 @@
 				PRODUCT_NAME = client_end;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Debug;
 		};
@@ -1064,6 +1075,9 @@
 				PRODUCT_NAME = client_end;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Release;
 		};

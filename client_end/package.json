@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "base-64": "^0.1.0",
     "expo": "^20.0.0",
     "react": "16.0.0-alpha.12",
     "react-native": "0.48.3",
@@ -14,7 +15,8 @@
     "react-native-nfc-ios": "^0.1.4",
     "react-native-page-swiper": "^0.3.0",
     "react-native-popup-dialog": "^0.9.35",
-    "react-navigation": "^1.0.0-beta.11"
+    "react-native-tab-navigator": "^0.3.4",
+    "react-navigation": "^1.0.0-beta.13"
   },
   "devDependencies": {
     "babel-jest": "21.0.2",

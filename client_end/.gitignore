@@ -4,3 +4,6 @@ npm-debug.*
 ios/build
 ios/client_end.xcworkspace/xcuserdata/
 ios/client_end.xcodeproj/project.xcworkspace/xcuserdata/
+android/.gradle/
+android/app/build/
+android/build/
