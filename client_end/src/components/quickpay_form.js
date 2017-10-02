@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableHighlight, TextInput, View, Text } from 'react-native';
 import NavigationBar from 'react-native-navbar';
 import styles from '../styles';
-import { getTagId, readTag, writeTag } from 'nfc-react-native';
+import { writeTag } from 'nfc-react-native';
 
 export default class QuickPayForm extends React.Component {
 
@@ -14,32 +14,18 @@ export default class QuickPayForm extends React.Component {
 		}
 	}
 
-	readTagId() {
-		getTagId()
-	}
-
-	readTagData() {
-		readTag([
-		{ sector: 1, blocks: [1,2], clave: 'FFFFFFFFFFFF', keyType: 'A' },
-		{ sector: 2, blocks: [0,1,2], clave: 'FFFFFFFFFFFF', keyType: 'A' },
-		{ sector: 3, blocks: [0], clave: 'FFFFFFFFFFFF', keyType: 'A' }
-		])
-	}
-
 	writeTagData() {
-		writeTag([{ sector: 1, blocks: [
-			{ index: 1, data: [15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,15,15] },
-			{ index: 2, data: [15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,15,15] } ],
-				clave: 'FFFFFFFFFFFF', keyType: 'A' },
-			{ sector: 2, blocks: [
-			{ index: 0, data: [15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,15,15] },
-			{ index: 1, data: [15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,15,15] },
-			{ index: 2, data: [15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,15,15] } ],
-				clave: 'FFFFFFFFFFFF', keyType: 'A' },
-			{ sector: 3, blocks: [
-			{ index: 0, data: [15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,15,15] } ],
-				clave: 'FFFFFFFFFFFF', keyType: 'A' },
-			], 1148002313)
+		writeTag(
+			[{
+				"records": [{
+					"type": "VQ==",
+					"payload": "UmVhY3QgTmF0aXZlIE5GQyBpT1M=",
+					"identifier": null,
+					"typeNameFormat": "WELL_KNOWN_RECORD",
+				}]
+			}],
+			1148002313
+			)
 	}
 
 	render() {
