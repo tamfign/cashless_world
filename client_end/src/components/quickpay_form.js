@@ -1,8 +1,7 @@
 import React from 'react';
-import { TouchableHighlight, TextInput, View, Text } from 'react-native';
+import { Platform, TouchableHighlight, TextInput, View, Text } from 'react-native';
 import NavigationBar from 'react-native-navbar';
 import styles from '../styles';
-import { writeTag } from 'nfc-react-native';
 
 export default class QuickPayForm extends React.Component {
 
@@ -15,7 +14,9 @@ export default class QuickPayForm extends React.Component {
 	}
 
 	writeTagData() {
-		writeTag(
+		if (Platform.OS == "android") {
+			const { writeTag } = require('nfc-react-native');
+			writeTag(
 			[{
 				"records": [{
 					"type": "VQ==",
@@ -26,6 +27,7 @@ export default class QuickPayForm extends React.Component {
 			}],
 			1148002313
 			)
+		}
 	}
 
 	render() {
