@@ -5,12 +5,6 @@ import styles from '../styles';
 import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 import NavigationBar from 'react-native-navbar';
 
-if (Platform.OS == 'ios') {
-	const  NFCNDEFReaderSession = require('react-native-nfc-ios');
-} else {
-	const readTag = require('nfc-react-native');
-}
-
 export default class QuickGetForm extends React.Component {
 
 	constructor() {
@@ -27,16 +21,15 @@ export default class QuickGetForm extends React.Component {
 
 	async readTag() {
 		if (Platform.OS == 'ios') {
+			const { NFCNDEFReaderSession } = require('react-native-nfc-ios');
 			const message = await NFCNDEFReaderSession.readTag();
-		} else {
-			const message = await readTag();
-		}
-		const payloadB64 = messages[0].records[0].payload;
+			const payloadB64 = messages[0].records[0].payload;
 
-		this.state = {
-			result : base64.decode(payloadB64),
+			this.state = {
+				result : base64.decode(payloadB64),
+			}
+			this.popupDialog.show();
 		}
-		this.popupDialog.show();
 	}
 
 	render() {
