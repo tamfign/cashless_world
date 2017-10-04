@@ -1,8 +1,7 @@
-import { Component } from 'react';
 
-export default class Transfer extends Component {
+export default class Card {
 
-	async addNewCards(userId, type, cardNumber, holder, expire, csv) {
+	static async addNewCard(userId, type, cardNumber, holder, expire, csv) {
 		try {
 			var response = await fetch('http://localhost:31415',{
 				method: 'POST',
