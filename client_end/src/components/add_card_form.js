@@ -3,7 +3,7 @@ import { View, Text, Button } from 'react-native';
 import styles from '../styles';
 import NavigationBar from 'react-native-navbar';
 import { CreditCardInput } from 'react-native-credit-card-input';
-import Card from '../interfaces/add_card';
+import Card from '../interfaces/card_control';
 
 export default class AddCardForm extends React.Component {
 
