@@ -4,11 +4,13 @@ import { TouchableHighlight, ListView, View, Text } from 'react-native';
 import styles from '../styles';
 import Transactions from './transaction';
 import NavigationBar from 'react-native-navbar';
+import Card from '../interfaces/card_control';
 
 export default class AccountList extends React.Component {
 
 	constructor() {
 		super();
+		var res = Card.getCardsInfo("0001", "");
 
 		var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id});
 		this.state = {
