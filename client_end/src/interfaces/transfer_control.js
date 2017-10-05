@@ -1,7 +1,7 @@
 
 export default class Transfer {
 
-	static async pay(userId, type, amount) {
+	static async pay(userId, uuid, amount) {
 		try {
 			var response = await fetch('http://localhost:13432',{
 				method: 'POST',
@@ -11,7 +11,7 @@ export default class Transfer {
 				},
 				body: JSON.stringify({
 					userId,
-					type,
+					uuid,
 					amount
 				})
 			});
@@ -26,7 +26,7 @@ export default class Transfer {
 		}
 	}
 
-	static async accept(userId, type) {
+	static async accept(userId, uuid) {
 		try {
 			var response = await fetch('http://localhost:13432',{
 				method: 'POST',
@@ -36,7 +36,7 @@ export default class Transfer {
 				},
 				body: JSON.stringify({
 					userId,
-					type,
+					uuid,
 				})
 			});
 			var res = await response.text();

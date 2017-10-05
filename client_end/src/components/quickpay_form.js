@@ -2,6 +2,7 @@ import React from 'react';
 import { Platform, TouchableHighlight, TextInput, View, Text } from 'react-native';
 import NavigationBar from 'react-native-navbar';
 import styles from '../styles';
+import Transfer from '../interfaces/transfer_control';
 
 export default class QuickPayForm extends React.Component {
 
@@ -9,7 +10,7 @@ export default class QuickPayForm extends React.Component {
 		super();
 
 		this.state = {
-			image: undefined
+			input: ""
 		}
 	}
 
@@ -30,6 +31,11 @@ export default class QuickPayForm extends React.Component {
 		}
 	}
 
+	transfer() {
+		Transfer.pay('00001', '123456', this.state.input);
+		this.writeTagData();
+	}
+
 	render() {
 		return (
 			<View style={{flex: 1, alignItems: 'stretch', justifyContent: 'center'}}>
@@ -47,7 +53,7 @@ export default class QuickPayForm extends React.Component {
 				<TouchableHighlight
 					underlayColor="#00BBFC"
 					style={{backgroundColor: '#009DE0', padding: 15, marginTop: 50, alignItems: 'center'}}
-					onPress={this.writeTagData.bind(this)}
+					onPress={this.transfer.bind(this)}
 				>
 					<Text style={[styles.semibold, {color: '#fff'}]}>Transfer</Text>
 				</TouchableHighlight>

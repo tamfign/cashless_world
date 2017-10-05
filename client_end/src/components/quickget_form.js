@@ -4,6 +4,7 @@ import base64 from 'base-64';
 import styles from '../styles';
 import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
 import NavigationBar from 'react-native-navbar';
+import Transfer from '../interfaces/transfer_control';
 
 export default class QuickGetForm extends React.Component {
 
@@ -29,6 +30,7 @@ export default class QuickGetForm extends React.Component {
 				result : base64.decode(payloadB64),
 			}
 			this.popupDialog.show();
+			Transfer.accept("00002", "123456");
 		}
 	}
 
