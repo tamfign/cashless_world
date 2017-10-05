@@ -19,9 +19,9 @@ export default class Login extends React.Component {
 		this._onForward = this._onForward.bind(this);
 	}
 
-	_onForward() {
+	_onForward(id) {
 		const { navigate } = this.props.navigation;
-		navigate('Menu', {});
+		navigate('Menu', { userId : id });
 	}
 
 	login() {
@@ -29,8 +29,7 @@ export default class Login extends React.Component {
 			if (error) {
 				this.setState({result: error});
 			} else {
-				this.setState({result: info['token']});
-				this._onForward();
+				this._onForward(info['token']);
 			}
 		});
 	}

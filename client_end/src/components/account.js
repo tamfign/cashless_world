@@ -10,8 +10,8 @@ export default class Account extends React.Component {
 	render() {
 		return (
 			<Swiper style={styles.wrapper} >
-				<AccountList />
-				<AddCardForm />
+				<AccountList usrId = { this.props.usrId } />
+				<AddCardForm usrId = { this.props.usrId } />
 			</Swiper>
 		);
 	}

@@ -21,6 +21,7 @@ export default class Menu extends React.Component {
 	}
 
 	render() {
+		const { params } = this.props.navigation.state;
 		return (
 			<TabNavigator tintColor="black" barTintColor="#3abeff">
 				<TabNavigator.Item
@@ -31,7 +32,7 @@ export default class Menu extends React.Component {
 					onPress={() => {
 						this.setState({selectedTab : 'account'});
 					}}>
-					<Account/>
+					<Account usrId = { params.userId } />
 				</TabNavigator.Item>
 
 				<TabNavigator.Item
