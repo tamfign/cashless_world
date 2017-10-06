@@ -29,7 +29,7 @@ export default class Login extends React.Component {
 			if (error) {
 				this.setState({result: error});
 			} else {
-				this._onForward(info['token']);
+				this._onForward(info['userId']);
 			}
 		});
 	}
