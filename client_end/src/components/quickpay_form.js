@@ -14,7 +14,7 @@ export default class QuickPayForm extends React.Component {
 		}
 	}
 
-	writeTagData() {
+	writeTagData(transactionId) {
 		if (Platform.OS == "android") {
 			const { writeTag } = require('nfc-react-native');
 			writeTag(
@@ -26,14 +26,15 @@ export default class QuickPayForm extends React.Component {
 					"typeNameFormat": "WELL_KNOWN_RECORD",
 				}]
 			}],
-			1148002313
+			transactionId
 			)
 		}
 	}
 
 	transfer() {
-		Transfer.pay(this.props.usrId, '123456', this.state.input);
-		this.writeTagData();
+		var transactionId = "";
+		Transfer.pay(this.props.usrId, transactionId, this.state.input);
+		this.writeTagData(transactionId);
 	}
 
 	render() {
