@@ -30,7 +30,7 @@ export default class QuickGetForm extends React.Component {
 				result : base64.decode(payloadB64),
 			}
 			this.popupDialog.show();
-			Transfer.accept("00002", "123456");
+			Transfer.accept(this.props.usrId, "123456");
 		}
 	}
 

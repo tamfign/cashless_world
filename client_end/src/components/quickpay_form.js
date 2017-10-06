@@ -32,7 +32,7 @@ export default class QuickPayForm extends React.Component {
 	}
 
 	transfer() {
-		Transfer.pay('00001', '123456', this.state.input);
+		Transfer.pay(this.props.usrId, '123456', this.state.input);
 		this.writeTagData();
 	}
 

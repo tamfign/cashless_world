@@ -12,8 +12,8 @@ export default class QuickPay extends React.Component {
 		return (
 			<Swiper
 				style={styles.wrapper} >
-				<QuickPayForm />
-				<QuickGetForm />
+				<QuickPayForm usrId = { this.props.usrId } />
+				<QuickGetForm usrId = { this.props.usrId } />
 			</Swiper>
 		);
 	}

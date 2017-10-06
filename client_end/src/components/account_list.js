@@ -10,7 +10,6 @@ export default class AccountList extends React.Component {
 
 	constructor() {
 		super();
-		var res = Card.getCardsInfo("0001", "");
 
 		var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id});
 		this.state = {
@@ -46,6 +45,7 @@ export default class AccountList extends React.Component {
 	}
 
 	render() {
+		var res = Card.getCardsInfo(this.props.usrId, "");
 		return (
 			<View style={styles.container}>
 			<NavigationBar

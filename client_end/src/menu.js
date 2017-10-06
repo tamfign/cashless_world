@@ -44,7 +44,7 @@ export default class Menu extends React.Component {
 					}}>
 
 					<View style={styles.navigator}>
-						<QuickPay />
+						<QuickPay usrId = { params.userId } />
 					</View>
 				</TabNavigator.Item>
 			</TabNavigator>
