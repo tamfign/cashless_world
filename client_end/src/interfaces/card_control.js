@@ -1,10 +1,11 @@
 
-export default class Card {
-	const URL = 'http://ec2-52-36-241-1.us-west-2.compute.amazonaws.com:31415';
+const URL = 'http://ec2-52-36-241-1.us-west-2.compute.amazonaws.com:31415';
 
-	static async addNewCard(userId, type, cardNumber, holder, expire, csv) {
+export default class Card {
+
+	static async addNewCard(userId, cardNumber, holder, expire, csv) {
 		try {
-			var response = await fetch(URL, {
+			let response = await fetch(URL, {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',
@@ -21,9 +22,11 @@ export default class Card {
 					}
 				})
 			});
-			var res = await response.text();
+			let res = await response.text();
+			console.log(res);
 			if(response.status>=200 && response.status<300) {
 				console.log("res success is:"+res);
+				return res['Result'];
 			} else {
 				throw res;
 			}
@@ -34,7 +37,7 @@ export default class Card {
 
 	static async getCardsInfo(userId) {
 		try {
-			var response = await fetch(URL, {
+			let response = await fetch(URL, {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',
@@ -42,12 +45,13 @@ export default class Card {
 				},
 				body: JSON.stringify({
 					UserId: userId,
-					Type: "",
+					Type: "GetCardInfo",
 				})
 			});
-			var res = await response.text();
+			let res = await response.text();
 			if(response.status>=200 && response.status<300) {
 				console.log("res success is:"+res);
+				return res;
 			} else {
 				throw res;
 			}

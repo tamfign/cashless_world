@@ -46,6 +46,7 @@ export default class AccountList extends React.Component {
 
 	render() {
 		var res = Card.getCardsInfo(this.props.usrId, "");
+		console.log(res);
 		return (
 			<View style={styles.container}>
 			<NavigationBar

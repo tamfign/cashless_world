@@ -1,6 +1,7 @@
 
+const URL = 'http://ec2-52-36-241-1.us-west-2.compute.amazonaws.com:31415';
+
 export default class Transfer {
-	const URL = 'http://ec2-52-36-241-1.us-west-2.compute.amazonaws.com:31415';
 
 	static async pay(userId, uuid, amount) {
 		try {
@@ -14,7 +15,7 @@ export default class Transfer {
 					UserId: userId,
 					Uuid: uuid,
 					Amount: amount,
-					Type: ""
+					Type: "TransferStart"
 				})
 			});
 			var res = await response.text();
@@ -39,7 +40,7 @@ export default class Transfer {
 				body: JSON.stringify({
 					UserId: userId,
 					Uuid: uuid,
-					Type: ""
+					Type: "TransferEnd"
 				})
 			});
 			var res = await response.text();
