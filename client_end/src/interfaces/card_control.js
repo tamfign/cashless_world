@@ -1,9 +1,10 @@
 
 export default class Card {
+	const URL = 'http://ec2-52-36-241-1.us-west-2.compute.amazonaws.com:31415';
 
 	static async addNewCard(userId, type, cardNumber, holder, expire, csv) {
 		try {
-			var response = await fetch('http://localhost:31415',{
+			var response = await fetch(URL, {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',
@@ -11,7 +12,7 @@ export default class Card {
 				},
 				body: JSON.stringify({
 					UserId: userId,
-					Type: type,
+					Type: "CardRegister",
 					CardInfo: {
 						CardNumber: cardNumber,
 						HolderName: holder,
@@ -31,17 +32,17 @@ export default class Card {
 		}
 	}
 
-	static async getCardsInfo(userId, type) {
+	static async getCardsInfo(userId) {
 		try {
-			var response = await fetch('http://localhost:13432',{
+			var response = await fetch(URL, {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
-					userId,
-					type,
+					UserId: userId,
+					Type: "",
 				})
 			});
 			var res = await response.text();

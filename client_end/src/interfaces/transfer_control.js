@@ -1,18 +1,20 @@
 
 export default class Transfer {
+	const URL = 'http://ec2-52-36-241-1.us-west-2.compute.amazonaws.com:31415';
 
 	static async pay(userId, uuid, amount) {
 		try {
-			var response = await fetch('http://localhost:13432',{
+			var response = await fetch(URL, {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
-					userId,
-					uuid,
-					amount
+					UserId: userId,
+					Uuid: uuid,
+					Amount: amount,
+					Type: ""
 				})
 			});
 			var res = await response.text();
@@ -35,8 +37,9 @@ export default class Transfer {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
-					userId,
-					uuid,
+					UserId: userId,
+					Uuid: uuid,
+					Type: ""
 				})
 			});
 			var res = await response.text();
