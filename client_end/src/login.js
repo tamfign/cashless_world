@@ -9,7 +9,7 @@ import {
 import { FacebookLoginManager } from 'NativeModules';
 import styles from './styles';
 import Menu from './menu';
-import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import { LoginButton, LoginManager, AccessToken } from 'react-native-fbsdk';
 
 export default class Login extends React.Component {
 	constructor() {
@@ -18,6 +18,10 @@ export default class Login extends React.Component {
 			result: '...'
 		};
 		this._onForward = this._onForward.bind(this);
+
+		if (Platform.OS == "android") {
+			LoginManager.logOut();
+		}
 	}
 
 	_onForward(id) {
