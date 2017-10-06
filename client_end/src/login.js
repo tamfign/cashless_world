@@ -1,14 +1,15 @@
 import React from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
+  Platform,
   TouchableHighlight
 } from 'react-native';
 import { FacebookLoginManager } from 'NativeModules';
 import styles from './styles';
 import Menu from './menu';
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
 
 export default class Login extends React.Component {
 	constructor() {
@@ -35,6 +36,7 @@ export default class Login extends React.Component {
 	}
 
 	render() {
+	if (Platform.OS == "ios") {
 	return (
 		<View style={styles.center_container}>
 			<TouchableHighlight onPress={this.login.bind(this)}>
@@ -46,6 +48,25 @@ export default class Login extends React.Component {
 				{this.state.result}
 			</Text>
 		</View>
-	);
+	);} else {
+	return (
+		<View>
+			<LoginButton
+				onLoginFinished={(error, result) => {
+				if (error) {
+					alert("login has error: " + result.error);
+				} else if (result.isCancelled) {
+					alert("login is cancelled.");
+				} else {
+					AccessToken.getCurrentAccessToken().then(
+						(data) => {
+							this._onForward.bind(this);
+							this._onForward(data.getUserId());
+						}
+				)}
+				}}
+				onLogoutFinished={() => alert("logout.")}/>
+		</View>
+	);}
 	}
 }
