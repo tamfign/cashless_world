@@ -4,13 +4,22 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  Image
 } from 'react-native';
 import { FacebookLoginManager } from 'NativeModules';
 import styles from './styles';
 import Menu from './menu';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default class Login extends React.Component {
+	
+	static navigationOptions = {
+		title: 'Cashless World',
+		headerStyle: { backgroundColor: '#006e7c' },
+		headerTitleStyle: { color: 'white' },
+	  }
+
 	constructor() {
 		super();
 		this.state = {
@@ -36,16 +45,16 @@ export default class Login extends React.Component {
 
 	render() {
 	return (
-		<View style={styles.center_container}>
-			<TouchableHighlight onPress={this.login.bind(this)}>
+		<LinearGradient style={styles.center_container} colors={['#006e7c', '#57c7d1', '#8fd9d2', '#eebfa1']}>
+			<Image
+			style={styles.log}
+			source={require('../img/log1.png')}/>
+			<TouchableHighlight style={styles.facebooklogin} onPress={this.login.bind(this)}>
 				<Text style={styles.welcome}>
 					Facebook Login
 				</Text>
 			</TouchableHighlight>
-			<Text style={styles.instructions}>
-				{this.state.result}
-			</Text>
-		</View>
+		</LinearGradient>
 	);
 	}
 }

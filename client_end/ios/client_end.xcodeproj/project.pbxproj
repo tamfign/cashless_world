@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -41,6 +40,7 @@
 		D13A482EF6557BE91255BDE1 /* libPods-client_end.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5398619C221E5FCD1778963A /* libPods-client_end.a */; };
 		E589FF29AEDB4DFDBFA5A878 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 115DABB756D3465D95E76A47 /* Zocial.ttf */; };
 		FBEFFEDF064B476E97B5A821 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 143A99F4D82C48F18F6E6E3E /* Foundation.ttf */; };
+		7A5DDDE27FD449F783649247 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D761A1E49BE34FBEBBA6E225 /* libBVLinearGradient.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -328,6 +328,8 @@
 		ED69A1B1178C436FAB846452 /* libPods-client_end-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-client_end-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9A3547A9E74B9B7004AB82E /* libPods-client_end-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-client_end-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FABD2DEE6FE14325AC4AA243 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		150F495BE6BA4D8CAB6BDD89 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; name = "BVLinearGradient.xcodeproj"; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		D761A1E49BE34FBEBBA6E225 /* libBVLinearGradient.a */ = {isa = PBXFileReference; name = "libBVLinearGradient.a"; path = "libBVLinearGradient.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +356,7 @@
 				D13A482EF6557BE91255BDE1 /* libPods-client_end.a in Frameworks */,
 				373F8F8485204542ADD86B5D /* libReactNativeNfcIos.a in Frameworks */,
 				7C825B23732E41DEADCD0C7A /* libRNVectorIcons.a in Frameworks */,
+				7A5DDDE27FD449F783649247 /* libBVLinearGradient.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +550,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				1188E10BF3EC4CB2A80240C3 /* ReactNativeNfcIos.xcodeproj */,
 				85DBBE8A97094E6A80A4E89C /* RNVectorIcons.xcodeproj */,
+				150F495BE6BA4D8CAB6BDD89 /* BVLinearGradient.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -640,7 +644,7 @@
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = ECXK94M77H;
+						DevelopmentTeam = JMX2A658B4;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -1094,7 +1098,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = ECXK94M77H;
+				DEVELOPMENT_TEAM = JMX2A658B4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1104,11 +1108,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-nfc-ios/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 				);
 				INFOPLIST_FILE = client_end/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/client_end\"",
 					"\"$(SRCROOT)/client_end\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1116,7 +1122,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tamfign.cashless;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tamfign.cashless.Cashless;
 				PRODUCT_NAME = client_end;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1132,7 +1138,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ECXK94M77H;
+				DEVELOPMENT_TEAM = JMX2A658B4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1142,11 +1148,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-nfc-ios/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
 				);
 				INFOPLIST_FILE = client_end/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/client_end\"",
 					"\"$(SRCROOT)/client_end\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1154,7 +1162,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tamfign.cashless;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tamfign.cashless.Cashless;
 				PRODUCT_NAME = client_end;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";

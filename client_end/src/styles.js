@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
     },
 
     bold: {
-        fontWeight: 'bold',
         marginLeft: 10,
-        fontSize: 20,
+        fontSize: 15,
+        marginTop: 25
     },
     title: {
         fontWeight: 'bold',
@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
     },
     touchable: {
 	backgroundColor: '#009DE0',
-	padding: 15,
 	marginTop: 50,
 	alignItems: 'center'
     },
@@ -69,20 +68,37 @@ const styles = StyleSheet.create({
 	marginBottom: 5,
     },
     welcome: {
-	height: 50,
-	fontSize: 40,
+	height: 40,
+    fontSize: 30,
 	fontFamily: 'Gill Sans',
 	textAlign: 'center',
 	color: '#ffffff',
-	opacity: 0.8,
-	justifyContent: 'center',
-	backgroundColor: '#3b5998'
+    backgroundColor: 'rgba(255,255,250,0.3)',
+    marginBottom:95
     },
     center_container: {
 	flex: 1,
-	alignItems: 'stretch',
-	justifyContent: 'center'
-    }
+	alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: 'rgba(0,191,255,0.3)',
+    },
+    log:{
+    width:100,
+    height:100,
+    justifyContent: 'center',
+    },
+    btn:{
+        marginLeft:75,
+        marginTop:140,
+        width:220,
+        height:220,
+        backgroundColor:'#18B4FF',
+        justifyContent:'center',
+        alignItems:'center',
+        borderRadius:110,
+      }
+    
+
 });
 
 module.exports = styles;

@@ -26,14 +26,14 @@ export default class AddCardForm extends React.Component {
 
 	render() {
 	return (
-		<View style={styles.container}>
+		<View style={{flex: 1, alignItems: 'stretch', justifyContent: 'flex-start',marginBottom:20,backgroundColor:'white'}}>
 			<NavigationBar
 				title={{ title: 'Add New Card' }}
 			/>
+
 			<CreditCardInput
 				requiresCVC
 				requiresName
-
 				labelStyle={styles.label}
 				inputStyle={styles.input}
 				validColor={"black"}

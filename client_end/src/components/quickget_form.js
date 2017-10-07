@@ -1,5 +1,5 @@
 import React from 'react';
-import  { Button, Platform, TouchableHighlight, TextInput, View, Text } from 'react-native';
+import  { Button, Platform, TouchableHighlight, TextInput, View, Text,TouchableOpacity } from 'react-native';
 import base64 from 'base-64';
 import styles from '../styles';
 import PopupDialog, { SlideAnimation } from 'react-native-popup-dialog';
@@ -36,16 +36,15 @@ export default class QuickGetForm extends React.Component {
 
 	render() {
 		return (
-			<View style={styles.center_container}>
+			<View style={{flex: 1, alignItems: 'stretch', justifyContent: 'flex-start'}}>
 				<NavigationBar
 					title={{ title: 'Quick Get' }}
 				/>
-				<TouchableHighlight
-					underlayColor="#00BBFC"
-					style={styles.touchable}
-					onPress={this.readTag.bind(this)}>
-					<Text style={[styles.semibold, {color: '#fff'}]}>GET</Text>
-				</TouchableHighlight>
+				<TouchableOpacity onPress={this.readTag.bind(this)}>
+					<View style={styles.btn}>
+						<Text style={{fontSize:30, color:'#fff'}}>Tap</Text>
+					</View>
+				</TouchableOpacity>
 				<PopupDialog
 					ref={(popupDialog) => {
 						this.popupDialog = popupDialog;

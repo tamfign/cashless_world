@@ -6,7 +6,5 @@
 	<array>
 		<string>NDEF</string>
 	</array>
-	<key>com.apple.external-accessory.wireless-configuration</key>
-	<true/>
 </dict>
 </plist>
