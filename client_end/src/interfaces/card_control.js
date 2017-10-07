@@ -23,10 +23,9 @@ export default class Card {
 				})
 			});
 			let res = await response.text();
-			console.log(res);
 			if(response.status>=200 && response.status<300) {
-				console.log("res success is:"+res);
-				return res['Result'];
+				console.log("res success is:"+ JSON.parse(Card.format(res)));
+				return JSON.parse(Card.format(res))['Result'];
 			} else {
 				throw res;
 			}
@@ -50,13 +49,24 @@ export default class Card {
 			});
 			let res = await response.text();
 			if(response.status>=200 && response.status<300) {
-				console.log("res success is:"+res);
-				return res;
+				console.log("res success is:"+ Card.format(res));
+				return JSON.parse(Card.format(res));
 			} else {
 				throw res;
 			}
 		} catch(errors) {
 			console.log("error is:"+errors);
 		}
+	}
+
+	static format(str) {
+		var ret;
+		var tokens = str.split('\n');
+		for (var key in tokens) {
+			if (tokens[key] == "URL\r") {
+				ret = tokens[parseInt(key) + 1];
+			}
+		}
+		return ret;
 	}
 }

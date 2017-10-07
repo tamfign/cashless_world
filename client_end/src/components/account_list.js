@@ -11,39 +11,32 @@ export default class AccountList extends React.Component {
 	constructor() {
 		super();
 
-		var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id});
+		this.fetchData.bind(this);
 		this.state = {
-			dataSource: ds.cloneWithRows(require('../../data/accounts.json')),
+			dataSource: null,
 		}
 	}
 
-	componentDidMount() {
+	fetchData() {
 		var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id});
-		var res = Card.getCardsInfo(this.props.usrId, "");
-		console.log(res);
-
+		var result = Card.getCardsInfo(this.props.usrId);
+		console.log(result);
 		this.state = {
-			dataSource: ds.cloneWithRows(require('../../data/accounts.json')),
+			dataSource: ds.cloneWithRows(result),
 		}
-	}
-
-	selectAccount(account) {
-		this.props.navigator.push({
-			title: "Transactions",
-			component: Transactions,
-			passProps: {account},
-		});
 	}
 
 	renderRow(rowData) {
+		let cardNumber = rowData ? "**** **** ***** " + rowData.CardNumber.substr(rowData.CardNumber.length - 4) : "";
+		let name = rowData ? rowData.HolderName : "";
 		return (
-		<TouchableHighlight onPress={this.selectAccount}>
+		<TouchableHighlight>
 			<View>
 				<View style={{flexDirection: 'row', padding: 10, backgroundColor: '#fff'}}>
 					<View style={{flex: 1}}>
-						<Text style={styles.semibold}>{rowData.HolderName}</Text>
+						<Text style={styles.semibold}>{ name }</Text>
 						<Text style={[styles.light, {color: '#666', fontSize: 12}]}>
-							{ "**** **** ***** " + rowData.CardNumber.substr(rowData.CardNumber.length - 4) }
+							{ cardNumber }
 						</Text>
 					</View>
 				</View>
@@ -55,6 +48,7 @@ export default class AccountList extends React.Component {
 	}
 
 	render() {
+		this.fetchData();
 		return (
 			<View style={styles.container}>
 			<NavigationBar
