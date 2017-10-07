@@ -4,6 +4,8 @@ import NavigationBar from 'react-native-navbar';
 import styles from '../styles';
 import Transfer from '../interfaces/transfer_control';
 
+const uuidv1 = require('uuid/v1');
+
 export default class QuickPayForm extends React.Component {
 
 	constructor() {
@@ -14,17 +16,16 @@ export default class QuickPayForm extends React.Component {
 		}
 	}
 
-
 	 MoneyCheck(money){
-        var isNum = /^\d+(\.\d)/;
-        if(!isNum.test(money)){
-            return 0;
-        }else{
-            return 1;
-        }
-    }
+		var isNum = /^\d+(\.\d)/;
+		if(!isNum.test(money)){
+			return 0;
+		}else{
+			return 1;
+		}
+	}
 
-	writeTagData() {
+	writeTagData(transactionId) {
 		if (Platform.OS == "android") {
 			const { writeTag } = require('nfc-react-native');
 			writeTag(
@@ -36,14 +37,15 @@ export default class QuickPayForm extends React.Component {
 					"typeNameFormat": "WELL_KNOWN_RECORD",
 				}]
 			}],
-			1148002313
+			99372002
 			)
 		}
 	}
 
 	transfer() {
-		Transfer.pay(this.props.usrId, '123456', this.state.input);
-		this.writeTagData();
+		var transactionId = uuidv1();
+		Transfer.pay(this.props.usrId, transactionId, this.state.input);
+		this.writeTagData(transactionId);
 	}
 
 	render() {

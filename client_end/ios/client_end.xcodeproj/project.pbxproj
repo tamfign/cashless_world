@@ -520,6 +520,7 @@
 			children = (
 				A256165F36704205B775F31F /* libReactNativeNfcIos.a */,
 				5D85C6B7D57248E7AF1548B6 /* libRNVectorIcons.a */,
+				29D4E78054A44768813E48A2 /* libRCTFBLogin.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";

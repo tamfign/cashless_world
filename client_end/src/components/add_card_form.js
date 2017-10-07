@@ -18,10 +18,20 @@ export default class AddCardForm extends React.Component {
 		this.state.form = form;
 	}
 
+	async send_card_info(val) {
+			var result = await Card.addNewCard(this.props.usrId, val.number, val.name, val.expiry, val.cvc);
+			if (result) {
+				alert("New Card is added.");
+			} else {
+				alert("Fail to add this card.");
+			}
+	}
+
 	save_card() {
-		var val = this.state.form['values'];
-		Card.addNewCard(this.props.usrId, val.number, val.type, val.number, val.name, val.expiry, val.cvc);
-		console.log(this.state.form);
+		if (this.state.form['valid']) {
+			var val = this.state.form['values'];
+			this.send_card_info(val);
+		}
 	}
 
 	render() {

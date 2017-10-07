@@ -1,15 +1,13 @@
 [
     {
-        "id": 1,
-        "name": "Andrew Yang",
-        "accountNumber": "45098888888888888",
+        "HolderName": "Andrew Yang",
+        "CardNumber": "45098888888888888",
         "balance": "$ 1.389,20"
     },
 
     {
-        "id": 2,
-        "name": "Bill Xia",
-        "accountNumber": "45098888888889999",
+        "HolderName": "Bill Xia",
+        "CardNumber": "45098888888889999",
         "balance": "$ 21.884,00"
     }
 ]

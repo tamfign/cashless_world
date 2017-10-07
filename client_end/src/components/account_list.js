@@ -6,34 +6,47 @@ import Transactions from './transaction';
 import NavigationBar from 'react-native-navbar';
 import Card from '../interfaces/card_control';
 
+const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id});
+
 export default class AccountList extends React.Component {
 
 	constructor() {
 		super();
 
-		var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id});
+		this.fetchData.bind(this);
 		this.state = {
-			dataSource: ds.cloneWithRows(require('../../data/accounts.json')),
+			dataSource: ds.cloneWithRows(""),
 		}
 	}
 
-	selectAccount(account) {
-		this.props.navigator.push({
-			title: "Transactions",
-			component: Transactions,
-			passProps: {account},
+	async fetchData() {
+		var result = await Card.getCardsInfo(this.props.usrId);
+		this.setState({
+			dataSource: ds.cloneWithRows(result),
 		});
 	}
 
+	componentDidMount() {
+		this.fetchData();
+	}
+
 	renderRow(rowData) {
+		let cardNumber = rowData ? "**** **** ***** " + rowData.CardNumber.substr(rowData.CardNumber.length - 4) : "";
+		let name = rowData ? rowData.HolderName : "";
+		let balance = rowData ? rowData.balance : "";
 		return (
-		<TouchableHighlight onPress={this.selectAccount}>
+		<TouchableHighlight>
 			<View>
 				<View style={{flexDirection: 'row', padding: 10, backgroundColor: '#fff'}}>
 					<View style={{flex: 1}}>
-						<Text style={styles.semibold}>{rowData.name}</Text>
+						<Text style={styles.semibold}>{ name }</Text>
 						<Text style={[styles.light, {color: '#666', fontSize: 12}]}>
-							{ "**** **** ***** " + rowData.accountNumber.substr(rowData.accountNumber.length - 4) }
+							{ cardNumber }
+						</Text>
+					</View>
+					<View>
+						<Text style={[styles.semibold]}>
+							{ balance }
 						</Text>
 					</View>
 				</View>
@@ -45,7 +58,6 @@ export default class AccountList extends React.Component {
 	}
 
 	render() {
-		var res = Card.getCardsInfo(this.props.usrId, "");
 		return (
 			<View style={{flex: 1, alignItems: 'stretch', justifyContent: 'flex-start'}}>
 			<NavigationBar

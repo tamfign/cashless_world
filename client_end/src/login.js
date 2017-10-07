@@ -1,16 +1,18 @@
 import React from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
   TouchableHighlight,
   Image
+  Platform,
 } from 'react-native';
+
 import { FacebookLoginManager } from 'NativeModules';
 import styles from './styles';
 import Menu from './menu';
 import LinearGradient from 'react-native-linear-gradient';
+import { LoginButton, LoginManager, AccessToken } from 'react-native-fbsdk';
 
 export default class Login extends React.Component {
 	
@@ -26,6 +28,10 @@ export default class Login extends React.Component {
 			result: '...'
 		};
 		this._onForward = this._onForward.bind(this);
+
+		if (Platform.OS == "android") {
+			LoginManager.logOut();
+		}
 	}
 
 	_onForward(id) {
@@ -44,6 +50,7 @@ export default class Login extends React.Component {
 	}
 
 	render() {
+	if (Platform.OS == "ios") {
 	return (
 		<LinearGradient style={styles.center_container} colors={['#006e7c', '#57c7d1', '#8fd9d2', '#eebfa1']}>
 			<Image
@@ -55,6 +62,25 @@ export default class Login extends React.Component {
 				</Text>
 			</TouchableHighlight>
 		</LinearGradient>
-	);
+	);} else {
+	return (
+		<View>
+			<LoginButton
+				onLoginFinished={(error, result) => {
+				if (error) {
+					alert("login has error: " + result.error);
+				} else if (result.isCancelled) {
+					alert("login is cancelled.");
+				} else {
+					AccessToken.getCurrentAccessToken().then(
+						(data) => {
+							this._onForward.bind(this);
+							this._onForward(data.getUserId());
+						}
+				)}
+				}}
+				onLogoutFinished={() => alert("logout.")}/>
+		</View>
+	);}
 	}
 }

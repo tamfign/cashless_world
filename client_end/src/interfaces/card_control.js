@@ -1,9 +1,13 @@
 
+const URL = 'http://ec2-52-36-241-1.us-west-2.compute.amazonaws.com:31415';
+
 export default class Card {
 
-	static async addNewCard(userId, type, cardNumber, holder, expire, csv) {
+	static async addNewCard(userId, cardNumber, holder, expire, csv) {
+		var ret = false;
+
 		try {
-			var response = await fetch('http://localhost:31415',{
+			let response = await fetch(URL, {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',
@@ -11,7 +15,7 @@ export default class Card {
 				},
 				body: JSON.stringify({
 					UserId: userId,
-					Type: type,
+					Type: "CardRegister",
 					CardInfo: {
 						CardNumber: cardNumber,
 						HolderName: holder,
@@ -20,38 +24,55 @@ export default class Card {
 					}
 				})
 			});
-			var res = await response.text();
+			let res = await response.text();
 			if(response.status>=200 && response.status<300) {
-				console.log("res success is:"+res);
+				console.log("res success is:"+ JSON.parse(Card.format(res)));
+				ret = JSON.parse(Card.format(res))['Result'];
 			} else {
 				throw res;
 			}
 		} catch(errors) {
 			console.log("error is:"+errors);
 		}
+		return ret;
 	}
 
-	static async getCardsInfo(userId, type) {
+	static async getCardsInfo(userId) {
+		var ret;
+
 		try {
-			var response = await fetch('http://localhost:13432',{
+			let response = await fetch(URL, {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
-					userId,
-					type,
+					UserId: userId,
+					Type: "GetCardInfo",
 				})
 			});
-			var res = await response.text();
+			let res = await response.text();
 			if(response.status>=200 && response.status<300) {
-				console.log("res success is:"+res);
+				console.log("res success is:"+ Card.format(res));
+				ret = JSON.parse(Card.format(res));
 			} else {
 				throw res;
 			}
 		} catch(errors) {
 			console.log("error is:"+errors);
 		}
+		return ret;
+	}
+
+	static format(str) {
+		var ret;
+		var tokens = str.split('\n');
+		for (var key in tokens) {
+			if (tokens[key] == "URL\r") {
+				ret = tokens[parseInt(key) + 1];
+			}
+		}
+		return ret;
 	}
 }
