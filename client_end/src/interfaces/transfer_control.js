@@ -5,7 +5,7 @@ export default class Transfer {
 
 	static async pay(userId, uuid, amount) {
 		try {
-			var response = await fetch(URL, {
+			let response = await fetch(URL, {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',
@@ -18,7 +18,7 @@ export default class Transfer {
 					Type: "TransferStart"
 				})
 			});
-			var res = await response.text();
+			let res = await response.text();
 			if(response.status>=200 && response.status<300) {
 				console.log("res success is:"+res);
 			} else {

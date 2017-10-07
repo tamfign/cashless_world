@@ -17,6 +17,16 @@ export default class AccountList extends React.Component {
 		}
 	}
 
+	componentDidMount() {
+		var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id});
+		var res = Card.getCardsInfo(this.props.usrId, "");
+		console.log(res);
+
+		this.state = {
+			dataSource: ds.cloneWithRows(require('../../data/accounts.json')),
+		}
+	}
+
 	selectAccount(account) {
 		this.props.navigator.push({
 			title: "Transactions",
@@ -31,9 +41,9 @@ export default class AccountList extends React.Component {
 			<View>
 				<View style={{flexDirection: 'row', padding: 10, backgroundColor: '#fff'}}>
 					<View style={{flex: 1}}>
-						<Text style={styles.semibold}>{rowData.name}</Text>
+						<Text style={styles.semibold}>{rowData.HolderName}</Text>
 						<Text style={[styles.light, {color: '#666', fontSize: 12}]}>
-							{ "**** **** ***** " + rowData.accountNumber.substr(rowData.accountNumber.length - 4) }
+							{ "**** **** ***** " + rowData.CardNumber.substr(rowData.CardNumber.length - 4) }
 						</Text>
 					</View>
 				</View>
@@ -45,8 +55,6 @@ export default class AccountList extends React.Component {
 	}
 
 	render() {
-		var res = Card.getCardsInfo(this.props.usrId, "");
-		console.log(res);
 		return (
 			<View style={styles.container}>
 			<NavigationBar
