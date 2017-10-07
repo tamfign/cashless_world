@@ -21,7 +21,7 @@ export default class Menu extends React.Component {
 	}
 
 	render() {
-		const { params } = this.props.navigation.state;
+		//const { params } = this.props.navigation.state;
 		return (
 			<TabNavigator tintColor="black" barTintColor="#3abeff">
 				<TabNavigator.Item
@@ -32,7 +32,7 @@ export default class Menu extends React.Component {
 					onPress={() => {
 						this.setState({selectedTab : 'account'});
 					}}>
-					<Account usrId = { params.userId } />
+					<Account usrId =  "WRS"  />
 				</TabNavigator.Item>
 
 				<TabNavigator.Item
@@ -44,7 +44,7 @@ export default class Menu extends React.Component {
 					}}>
 
 					<View style={styles.navigator}>
-						<QuickPay usrId = { params.userId } />
+						<QuickPay usrId =  "WRS"  />
 					</View>
 				</TabNavigator.Item>
 			</TabNavigator>
