@@ -3,7 +3,7 @@ import { View, Text, Button } from 'react-native';
 import styles from '../styles';
 import NavigationBar from 'react-native-navbar';
 import { CreditCardInput } from 'react-native-credit-card-input';
-import Card from '../interfaces/card_control';
+import { addNewCard } from '../interfaces/card_control';
 
 export default class AddCardForm extends React.Component {
 
@@ -21,7 +21,7 @@ export default class AddCardForm extends React.Component {
 	save_card() {
 		if (this.state.form['valid']) {
 			var val = this.state.form['values'];
-			if (Card.addNewCard(this.props.usrId, val.number, val.name, val.expiry, val.cvc)) {
+			if (addNewCard(this.props.usrId, val.number, val.name, val.expiry, val.cvc)) {
 				alert("Card is added");
 			}
 		}

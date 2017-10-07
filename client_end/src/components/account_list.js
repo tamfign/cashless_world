@@ -6,6 +6,8 @@ import Transactions from './transaction';
 import NavigationBar from 'react-native-navbar';
 import Card from '../interfaces/card_control';
 
+const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id});
+
 export default class AccountList extends React.Component {
 
 	constructor() {
@@ -13,22 +15,25 @@ export default class AccountList extends React.Component {
 
 		this.fetchData.bind(this);
 		this.state = {
-			dataSource: null,
+			dataSource: ds.cloneWithRows(""),
 		}
 	}
 
-	fetchData() {
-		var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id});
-		var result = Card.getCardsInfo(this.props.usrId);
-		console.log(result);
-		this.state = {
+	async fetchData() {
+		var result = await Card.getCardsInfo(this.props.usrId);
+		this.setState({
 			dataSource: ds.cloneWithRows(result),
-		}
+		});
+	}
+
+	componentDidMount() {
+		this.fetchData();
 	}
 
 	renderRow(rowData) {
 		let cardNumber = rowData ? "**** **** ***** " + rowData.CardNumber.substr(rowData.CardNumber.length - 4) : "";
 		let name = rowData ? rowData.HolderName : "";
+		let balance = rowData ? rowData.balance : "";
 		return (
 		<TouchableHighlight>
 			<View>
@@ -37,6 +42,11 @@ export default class AccountList extends React.Component {
 						<Text style={styles.semibold}>{ name }</Text>
 						<Text style={[styles.light, {color: '#666', fontSize: 12}]}>
 							{ cardNumber }
+						</Text>
+					</View>
+					<View>
+						<Text style={[styles.semibold]}>
+							{ balance }
 						</Text>
 					</View>
 				</View>
@@ -48,7 +58,6 @@ export default class AccountList extends React.Component {
 	}
 
 	render() {
-		this.fetchData();
 		return (
 			<View style={styles.container}>
 			<NavigationBar

@@ -4,6 +4,8 @@ const URL = 'http://ec2-52-36-241-1.us-west-2.compute.amazonaws.com:31415';
 export default class Card {
 
 	static async addNewCard(userId, cardNumber, holder, expire, csv) {
+		var ret = false;
+
 		try {
 			let response = await fetch(URL, {
 				method: 'POST',
@@ -25,16 +27,19 @@ export default class Card {
 			let res = await response.text();
 			if(response.status>=200 && response.status<300) {
 				console.log("res success is:"+ JSON.parse(Card.format(res)));
-				return JSON.parse(Card.format(res))['Result'];
+				ret = JSON.parse(Card.format(res))['Result'];
 			} else {
 				throw res;
 			}
 		} catch(errors) {
 			console.log("error is:"+errors);
 		}
+		return ret;
 	}
 
 	static async getCardsInfo(userId) {
+		var ret;
+
 		try {
 			let response = await fetch(URL, {
 				method: 'POST',
@@ -50,13 +55,14 @@ export default class Card {
 			let res = await response.text();
 			if(response.status>=200 && response.status<300) {
 				console.log("res success is:"+ Card.format(res));
-				return JSON.parse(Card.format(res));
+				ret = JSON.parse(Card.format(res));
 			} else {
 				throw res;
 			}
 		} catch(errors) {
 			console.log("error is:"+errors);
 		}
+		return ret;
 	}
 
 	static format(str) {
