@@ -4,7 +4,7 @@ import {
   Text,
   View,
   TouchableHighlight,
-  Image
+  Image,
   Platform,
 } from 'react-native';
 
