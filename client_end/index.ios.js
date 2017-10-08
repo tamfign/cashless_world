@@ -10,4 +10,5 @@ var App = StackNavigator({
 	Menu: { screen: Menu },
 });
 
+console.disableYellowBox = true;
 AppRegistry.registerComponent('client_end', () => App);
