@@ -1,3 +1,7 @@
+/**
+ * Page to list out account information
+ */
+
 import React from 'react';
 import { TouchableHighlight, ListView, View, Text } from 'react-native';
 
@@ -27,12 +31,14 @@ export default class AccountList extends React.Component {
 	}
 
 	componentDidMount() {
+		// Fetch date from server every 1 min.
 		setInterval(() => {
 			this.fetchData()
 		}, 1000);
 	}
 
 	renderRow(rowData) {
+		// Mask some of the digit of the card number.
 		let cardNumber = rowData ? "**** **** ***** " + rowData.CardNumber.substr(rowData.CardNumber.length - 4) : "";
 		let name = rowData ? rowData.HolderName : "";
 		let balance = rowData ? rowData.balance : "";

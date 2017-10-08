@@ -1,8 +1,12 @@
+/**
+ * Module to perform pay and accept transaction connected to server.
+ */
 
 const URL = 'http://ec2-52-36-241-1.us-west-2.compute.amazonaws.com:31415';
 
 export default class Transfer {
 
+	// API to send payment message to server through HTTP.
 	static async pay(userId, uuid, amount) {
 		try {
 			let response = await fetch(URL, {
@@ -29,6 +33,7 @@ export default class Transfer {
 		}
 	}
 
+	// API to send accept payment message to server through HTTP.
 	static async accept(userId, uuid) {
 		var ret;
 
@@ -58,6 +63,7 @@ export default class Transfer {
 		return ret;
 	}
 
+	// Covert HTTP response to format we need.
 	static format(str) {
                 var ret;
                 var tokens = str.split('\n');

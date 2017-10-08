@@ -1,3 +1,7 @@
+/**
+ * Menu Page. Also the main frame of the functional activities.
+ */
+
 import React from 'react';
 import { StyleSheet, Image, Text, View } from 'react-native';
 import NativeModules from 'NativeModules';
@@ -8,6 +12,8 @@ import QuickPay from './components/quickpay';
 import styles from './styles';
 
 export default class Menu extends React.Component {
+
+	// Disable left button to go back to login page.
 	static navigationOptions = {
 		headerLeft:null
 	}
@@ -15,6 +21,7 @@ export default class Menu extends React.Component {
 	constructor() {
 		super();
 
+		// Default show the quick pay page.
 		this.state = {
 			selectedTab : 'quickpay',
 		};

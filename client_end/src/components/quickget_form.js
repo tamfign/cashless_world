@@ -1,3 +1,7 @@
+/**
+ * Page of Quick Receive Payment.
+ */
+
 import React from 'react';
 import  { Button, Platform, TouchableHighlight, TextInput, View, Text,TouchableOpacity } from 'react-native';
 import base64 from 'base-64';
@@ -16,6 +20,7 @@ export default class QuickGetForm extends React.Component {
 		}
 	}
 
+	// Display result
 	showDialog(result) {
 		this.setState({
 			result: result,
@@ -23,7 +28,9 @@ export default class QuickGetForm extends React.Component {
 		this.popupDialog.show();
 	}
 
+	// Read Tag info through NFC.
 	async readTag() {
+		// Only read Tag in IOS platform currently
 		if (Platform.OS == 'ios') {
 			const { NFCNDEFReaderSession } = require('react-native-nfc-ios');
 			setTimeout( async () => {

@@ -1,3 +1,7 @@
+/**
+ * Pannel of Payment activity.
+ */
+
 import React from 'react';
 import { View } from 'react-native';
 
