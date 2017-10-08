@@ -47,10 +47,10 @@ export default class QuickPayForm extends React.Component {
 	}
 
 	transfer() {
-		var transactionId = "000001";//uuidv1();
+		var transactionId = uuidv1();
 		Transfer.pay(this.props.usrId, transactionId, this.state.input);
 		this.writeTagData(transactionId);
-		alert("Pay!");
+		alert("NOW TAP ON !");
 	}
 
 	render() {
