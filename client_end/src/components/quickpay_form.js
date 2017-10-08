@@ -64,7 +64,7 @@ export default class QuickPayForm extends React.Component {
 
 				<TouchableHighlight
 					underlayColor="#00BBFC"
-					style={{backgroundColor: '#009DE0', padding: 15, marginTop: 50, alignItems: 'center'}}
+					style={{backgroundColor: '#009DE0', padding: 15,marginTop: 50, alignItems: 'center'}}
 					onPress={this.transfer.bind(this)}
 				>
 					<Text style={[styles.semibold, {color: '#fff'}]}>Pay</Text>

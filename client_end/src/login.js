@@ -55,7 +55,11 @@ export default class Login extends React.Component {
 		<LinearGradient style={styles.center_container} colors={['#006e7c', '#57c7d1', '#8fd9d2', '#eebfa1']}>
 			<Image
 			style={styles.log}
-			source={require('../img/log1.png')}/>
+			source={require('../img/log5.png')}/>
+			<Image
+			style={styles.log1}
+			source={require('../img/facebook.png')}/>
+
 			<TouchableHighlight style={styles.facebooklogin} onPress={this.login.bind(this)}>
 				<Text style={styles.welcome}>
 					Facebook Login

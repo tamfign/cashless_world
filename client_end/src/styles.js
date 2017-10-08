@@ -74,19 +74,28 @@ const styles = StyleSheet.create({
 	textAlign: 'center',
 	color: '#ffffff',
     backgroundColor: 'rgba(255,255,250,0.3)',
-    marginBottom:95
+    marginBottom:125
     },
     center_container: {
 	flex: 1,
-	alignItems: 'center',
+	alignItems: 'stretch',
     justifyContent: 'space-between',
     backgroundColor: 'rgba(0,191,255,0.3)',
     },
     log:{
-    width:100,
-    height:100,
+    width:230,
+    height:230,
     justifyContent: 'center',
+    marginTop:80,
+    marginLeft:65
     },
+    log1:{
+        width:30,
+        height:30,
+        justifyContent: 'center',
+        marginTop:135,
+        marginLeft:170
+        },
     btn:{
         marginLeft:75,
         marginTop:140,
