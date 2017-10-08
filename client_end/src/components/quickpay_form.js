@@ -30,19 +30,14 @@ export default class QuickPayForm extends React.Component {
 			const { writeTag } = require('nfc-ndef-react-native');
 			console.log("about to writte");
 			writeTag(
-			[
-  {
-    "records": [
-      {
-        "type": "VQ==", // base64 encoded for 55, URI record
-        "payload": "UmVhY3QgTmF0aXZlIE5GQyBpT1M=", // base64 encoded for "React Native NFC iOS"
-        "identifier": null,  // No identifier in the tag
-        "typeNameFormat": "WELL_KNOWN_RECORD",
-      }
-    ]
-  }
-]
-			);
+			[{
+				"records": [{
+					"type": "VQ==", // base64 encoded for 55, URI record
+					"payload": transactionId,
+					"identifier": null,
+					"typeNameFormat": "WELL_KNOWN_RECORD",
+				}]
+			}]);
 		}
 	}
 

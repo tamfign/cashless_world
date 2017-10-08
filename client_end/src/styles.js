@@ -6,10 +6,8 @@ const styles = StyleSheet.create({
     semibold: {
         fontWeight: 'bold',
     },
-
     light: {
     },
-
     bold: {
         marginLeft: 10,
         fontSize: 15,
@@ -105,16 +103,15 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         borderRadius:110,
-      },
-      log_android:{
-        marginBottom:45,
-        width:260,
-        height:60,
-        backgroundColor:'rgba(255,255,250,0.3)',
-        alignItems:'center',
-        justifyContent:'center'
-     
-      },
+    },
+    log_android:{
+      marginBottom:45,
+      width:260,
+      height:60,
+      backgroundColor:'rgba(255,255,250,0.3)',
+      alignItems:'center',
+      justifyContent:'center'
+    },
 });
 
 module.exports = styles;
