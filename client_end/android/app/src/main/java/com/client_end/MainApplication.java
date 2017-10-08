@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.facebook.FacebookSdk;
 import com.facebook.react.ReactApplication;
-import com.magus.fblogin.FacebookLoginPackage;
 import es.tiarg.nfcndefreactnative.NfcNdefReactNativePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
@@ -37,7 +36,6 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new FacebookLoginPackage(),
             new NfcNdefReactNativePackage(),
             new LinearGradientPackage(),
             new FBSDKPackage(mCallbackManager),

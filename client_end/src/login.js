@@ -12,7 +12,7 @@ import { FacebookLoginManager } from 'NativeModules';
 import styles from './styles';
 import Menu from './menu';
 import LinearGradient from 'react-native-linear-gradient';
-import {FBLogin, FBLoginManager} from 'react-native-facebook-login';
+import { LoginButton, LoginManager, AccessToken } from 'react-native-fbsdk';
 
 export default class Login extends React.Component {
 	
@@ -64,12 +64,23 @@ export default class Login extends React.Component {
 		</LinearGradient>
 	);} else {
 	return (
-		<FBLogin
-			loginBehavior={FBLoginManager.LoginBehaviors.Native}
-			onLogin={function(e){console.log(e)}}
-			onLogout={function(e){console.log(e)}}
-			onCancel={function(e){console.log(e)}}
-		/>
+		<View>
+			<LoginButton
+				onLoginFinished={(error, result) => {
+				if (error) {
+					alert("login has error: " + result.error);
+				} else if (result.isCancelled) {
+					alert("login is cancelled.");
+				} else {
+					AccessToken.getCurrentAccessToken().then(
+						(data) => {
+							this._onForward.bind(this);
+							this._onForward(data.getUserId());
+						}
+				)}
+				}}
+				onLogoutFinished={() => alert("logout.")}/>
+		</View>
 	);}
 	}
 }
