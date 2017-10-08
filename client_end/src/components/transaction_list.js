@@ -1,3 +1,7 @@
+/**
+ * Page to display transaction history.
+ */
+
 import React from 'react';
 import { TouchableHighlight, NavigatorIOS, ScrollView, ListView, TouchableWithoutFeedback, Image, TextInput, View, Text } from 'react-native';
 import styles from '../styles';

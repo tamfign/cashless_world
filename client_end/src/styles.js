@@ -1,3 +1,7 @@
+/**
+ * Style sheet for display
+ */
+
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({

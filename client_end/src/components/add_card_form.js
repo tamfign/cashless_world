@@ -1,3 +1,7 @@
+/**
+ * Page to add new card information to server.
+ */
+
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 import styles from '../styles';
@@ -14,6 +18,7 @@ export default class AddCardForm extends React.Component {
 		};
 	}
 
+	// Event handler of form change
 	_onChange(form) {
 		this.state.form = form;
 	}
@@ -28,6 +33,7 @@ export default class AddCardForm extends React.Component {
 	}
 
 	save_card() {
+		// only save card when info is valid.
 		if (this.state.form['valid']) {
 			var val = this.state.form['values'];
 			this.send_card_info(val);

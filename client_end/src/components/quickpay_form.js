@@ -1,3 +1,7 @@
+/**
+ * Quick Pay Page
+ */
+
 import React from 'react';
 import { DeviceEventEmitter, Platform, TouchableHighlight, TextInput, View, Text,KeyboardAvoidingView } from 'react-native';
 import NavigationBar from 'react-native-navbar';
@@ -16,6 +20,7 @@ export default class QuickPayForm extends React.Component {
 		}
 	}
 
+	// Verfiy the amount input.
 	MoneyCheck(money) {
 		var isNum = /^\d+(\.\d)/;
 		if(!isNum.test(money)){
@@ -25,7 +30,9 @@ export default class QuickPayForm extends React.Component {
 		}
 	}
 
+	// Write NFC tag
 	writeTagData(transactionId) {
+		// Currently only Android supports NFC Write Tag
 		if (Platform.OS == "android") {
 			const { writeTag } = require('nfc-ndef-react-native');
 			console.log("about to writte");
@@ -41,6 +48,7 @@ export default class QuickPayForm extends React.Component {
 		}
 	}
 
+	// Send the userId and UUID to server, and UUID only through NFC
 	transfer() {
 		var transactionId = uuidv1();
 		Transfer.pay(this.props.usrId, transactionId, this.state.input);

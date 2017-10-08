@@ -1,3 +1,7 @@
+/**
+ * Page to display detail of account.
+ */
+
 import React from 'react';
 import { TouchableHighlight, NavigatorIOS, View, Text } from 'react-native';
 import Dimensions from 'Dimensions';
