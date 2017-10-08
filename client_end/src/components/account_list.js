@@ -15,7 +15,7 @@ export default class AccountList extends React.Component {
 
 		this.fetchData.bind(this);
 		this.state = {
-			dataSource: ds.cloneWithRows(""),
+			dataSource: ds.cloneWithRows([]),
 		}
 	}
 

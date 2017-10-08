@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, TouchableHighlight, TextInput, View, Text,KeyboardAvoidingView } from 'react-native';
+import { DeviceEventEmitter, Platform, TouchableHighlight, TextInput, View, Text,KeyboardAvoidingView } from 'react-native';
 import NavigationBar from 'react-native-navbar';
 import styles from '../styles';
 import Transfer from '../interfaces/transfer_control';
@@ -16,7 +16,7 @@ export default class QuickPayForm extends React.Component {
 		}
 	}
 
-	 MoneyCheck(money){
+	MoneyCheck(money) {
 		var isNum = /^\d+(\.\d)/;
 		if(!isNum.test(money)){
 			return 0;
@@ -25,20 +25,31 @@ export default class QuickPayForm extends React.Component {
 		}
 	}
 
+	componentDidMount() {
+	DeviceEventEmitter.addListener('onTagWrite', (e) => {
+        console.log('writing', e)
+        Alert.alert(JSON.stringify(e))
+    })
+	}
+
 	writeTagData(transactionId) {
 		if (Platform.OS == "android") {
-			const { writeTag } = require('nfc-react-native');
+			const { writeTag } = require('nfc-ndef-react-native');
+			console.log("about to writte");
 			writeTag(
-			[{
-				"records": [{
-					"type": "VQ==",
-					"payload": "UmVhY3QgTmF0aXZlIE5GQyBpT1M=",
-					"identifier": null,
-					"typeNameFormat": "WELL_KNOWN_RECORD",
-				}]
-			}],
-			99372002
-			)
+			[
+  {
+    "records": [
+      {
+        "type": "VQ==", // base64 encoded for 55, URI record
+        "payload": "UmVhY3QgTmF0aXZlIE5GQyBpT1M=", // base64 encoded for "React Native NFC iOS"
+        "identifier": null,  // No identifier in the tag
+        "typeNameFormat": "WELL_KNOWN_RECORD",
+      }
+    ]
+  }
+]
+			);
 		}
 	}
 
