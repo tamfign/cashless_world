@@ -27,7 +27,9 @@ export default class AccountList extends React.Component {
 	}
 
 	componentDidMount() {
-		this.fetchData();
+		setInterval(() => {
+			this.fetchData()
+		}, 1000);
 	}
 
 	renderRow(rowData) {
@@ -58,7 +60,6 @@ export default class AccountList extends React.Component {
 	}
 
 	render() {
-		this.fetchData();
 		return (
 			<View style={{flex: 1, alignItems: 'stretch', justifyContent: 'flex-start'}}>
 			<NavigationBar
