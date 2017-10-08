@@ -21,10 +21,10 @@ while True:
         data = s.recv(1024)
         print (data)
         s.send(bytes(dic_transferstart, encoding="utf8"))
-        data2 = s.recv(1024)
+        data = s.recv(1024)
         print (data)
         s.send(bytes(dic_transferend, encoding="utf8"))
-        data3 = s.recv(1024)
+        data = s.recv(1024)
         print (data3)
     except BrokenPipeError:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
