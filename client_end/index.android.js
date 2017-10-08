@@ -9,4 +9,4 @@ var App = StackNavigator({
 	Menu: { screen: Menu },
 });
 
-AppRegistry.registerComponent('client_end', () => Menu);
+AppRegistry.registerComponent('client_end', () => App);
