@@ -37,8 +37,8 @@ export default class QuickGetForm extends React.Component {
 				await NFCNDEFReaderSession.readTag();
 			}, 500);
 			const payloadB64 = messages[0].records[0].payload;
-			base64.decode(payloadB64);
-			let ret = await Transfer.accept(this.props.usrId, "000001");
+			var transactionId = base64.decode(payloadB64);
+			let ret = await Transfer.accept(this.props.usrId, transactionId);
 			if (ret['Result']) {
 				this.showDialog(ret);
 			}
