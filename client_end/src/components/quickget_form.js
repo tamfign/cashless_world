@@ -26,12 +26,11 @@ export default class QuickGetForm extends React.Component {
 	async readTag() {
 		if (Platform.OS == 'ios') {
 			const { NFCNDEFReaderSession } = require('react-native-nfc-ios');
-			//const message = await NFCNDEFReaderSession.readTag();
 			setTimeout( async () => {
 				await NFCNDEFReaderSession.readTag();
-			}, 5000);
-			//const payloadB64 = messages[0].records[0].payload;
-			//	base64.decode(payloadB64),
+			}, 500);
+			const payloadB64 = messages[0].records[0].payload;
+			base64.decode(payloadB64);
 			let ret = await Transfer.accept(this.props.usrId, "000001");
 			if (ret['Result']) {
 				this.showDialog(ret);

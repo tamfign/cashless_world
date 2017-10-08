@@ -28,10 +28,10 @@ export default class AddCardForm extends React.Component {
 	}
 
 	save_card() {
-//		if (this.state.form['valid']) {
+		if (this.state.form['valid']) {
 			var val = this.state.form['values'];
 			this.send_card_info(val);
-//		}
+		}
 	}
 
 	render() {
