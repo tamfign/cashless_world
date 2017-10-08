@@ -96,9 +96,16 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         borderRadius:110,
-      }
-    
-
+      },
+      log1:{
+        marginBottom:45,
+        width:260,
+        height:60,
+        backgroundColor:'rgba(255,255,250,0.3)',
+        alignItems:'center',
+        justifyContent:'center'
+     
+      },
 });
 
 module.exports = styles;

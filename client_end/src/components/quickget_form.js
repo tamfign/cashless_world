@@ -20,10 +20,22 @@ export default class QuickGetForm extends React.Component {
 		this.popupDialog.show();
 	}
 
+handleReadTag = async () => {
+    const { NFCNDEFReaderSession } = require('react-native-nfc-ios');
+    const messages = await NFCNDEFReaderSession.readTag();
+    this.appendMessageGroup({
+      messages,
+      receivedAt: (new Date()).toISOString(),
+    });
+  }
+
 	async readTag() {
 		if (Platform.OS == 'ios') {
+			console.log("readTag start");
 			const { NFCNDEFReaderSession } = require('react-native-nfc-ios');
+			console.log("readTag start");
 			const message = await NFCNDEFReaderSession.readTag();
+			console.log("readTag done");
 			const payloadB64 = messages[0].records[0].payload;
 
 			this.state = {
@@ -40,7 +52,7 @@ export default class QuickGetForm extends React.Component {
 				<NavigationBar
 					title={{ title: 'Quick Get' }}
 				/>
-				<TouchableOpacity onPress={this.readTag.bind(this)}>
+				<TouchableOpacity onPress={this.handleReadTag}>
 					<View style={styles.btn}>
 						<Text style={{fontSize:30, color:'#fff'}}>Tap</Text>
 					</View>

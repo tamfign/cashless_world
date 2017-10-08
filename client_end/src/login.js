@@ -64,8 +64,12 @@ export default class Login extends React.Component {
 		</LinearGradient>
 	);} else {
 	return (
-		<View>
-			<LoginButton
+		<LinearGradient style={styles.center_container} colors={['#006e7c', '#57c7d1', '#8fd9d2', '#eebfa1']}>
+			<Image
+			style={styles.log}
+			source={require('../img/log1.png')}/>
+		<LoginButton
+				style={styles.log1}
 				onLoginFinished={(error, result) => {
 				if (error) {
 					alert("login has error: " + result.error);
@@ -80,7 +84,8 @@ export default class Login extends React.Component {
 				)}
 				}}
 				onLogoutFinished={() => alert("logout.")}/>
-		</View>
+		
+		</LinearGradient>
 	);}
 	}
 }
