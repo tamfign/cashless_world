@@ -82,14 +82,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: 'rgba(0,191,255,0.3)',
     },
-    log:{
+    log_img_logo:{
     width:230,
     height:230,
     justifyContent: 'center',
     marginTop:80,
     marginLeft:65
     },
-    log1:{
+    log_img_fb:{
         width:30,
         height:30,
         justifyContent: 'center',
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         borderRadius:110,
       },
-      log1:{
+      log_android:{
         marginBottom:45,
         width:260,
         height:60,

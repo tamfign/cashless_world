@@ -54,10 +54,10 @@ export default class Login extends React.Component {
 	return (
 		<LinearGradient style={styles.center_container} colors={['#006e7c', '#57c7d1', '#8fd9d2', '#eebfa1']}>
 			<Image
-			style={styles.log}
-			source={require('../img/log5.png')}/>
+			style={styles.log_img_logo}
+			source={require('../img/logo.png')}/>
 			<Image
-			style={styles.log1}
+			style={styles.log_img_fb}
 			source={require('../img/facebook.png')}/>
 
 			<TouchableHighlight style={styles.facebooklogin} onPress={this.login.bind(this)}>
@@ -70,10 +70,10 @@ export default class Login extends React.Component {
 	return (
 		<LinearGradient style={styles.center_container} colors={['#006e7c', '#57c7d1', '#8fd9d2', '#eebfa1']}>
 			<Image
-			style={styles.log}
-			source={require('../img/log1.png')}/>
+			style={styles.log_img_logo}
+			source={require('../img/logo.png')}/>
 		<LoginButton
-				style={styles.log1}
+				style={styles.log_android}
 				onLoginFinished={(error, result) => {
 				if (error) {
 					alert("login has error: " + result.error);
