@@ -105,4 +105,6 @@ class clwCluster(object):
 def main():
     clwCluster().listen()
 
-main()
+# Start main
+if __name__ == '__main__':
+    main()
