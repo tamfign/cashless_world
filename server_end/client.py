@@ -25,7 +25,7 @@ while True:
         print (data)
         s.send(bytes(dic_transferend, encoding="utf8"))
         data = s.recv(1024)
-        print (data3)
+        print (data)
     except BrokenPipeError:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((HOST, PORT))
