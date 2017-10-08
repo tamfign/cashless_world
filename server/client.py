@@ -3,7 +3,7 @@ import json
 # This file is used to test the live of server
 
 '''The configuration of client socket'''
-HOST = 'ec2-52-36-241-1.us-west-2.compute.amazonaws.com'
+HOST = '0.0.0.0'
 PORT = 31415
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
@@ -23,7 +23,7 @@ while True:
         s.send(bytes(dic_transferstart, encoding="utf8"))
         data2 = s.recv(1024)
         print (data)
-        s.send(bytes(dic_transgerend, encoding="utf8"))
+        s.send(bytes(dic_transferend, encoding="utf8"))
         data3 = s.recv(1024)
         print (data3)
     except BrokenPipeError:
