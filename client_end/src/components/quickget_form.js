@@ -16,33 +16,26 @@ export default class QuickGetForm extends React.Component {
 		}
 	}
 
-	showDialog() {
+	showDialog(result) {
+		this.setState({
+			result: result,
+		});
 		this.popupDialog.show();
 	}
 
-handleReadTag = async () => {
-    const { NFCNDEFReaderSession } = require('react-native-nfc-ios');
-    const messages = await NFCNDEFReaderSession.readTag();
-    this.appendMessageGroup({
-      messages,
-      receivedAt: (new Date()).toISOString(),
-    });
-  }
-
 	async readTag() {
 		if (Platform.OS == 'ios') {
-			console.log("readTag start");
 			const { NFCNDEFReaderSession } = require('react-native-nfc-ios');
-			console.log("readTag start");
-			const message = await NFCNDEFReaderSession.readTag();
-			console.log("readTag done");
-			const payloadB64 = messages[0].records[0].payload;
-
-			this.state = {
-				result : base64.decode(payloadB64),
+			//const message = await NFCNDEFReaderSession.readTag();
+			setTimeout( async () => {
+				await NFCNDEFReaderSession.readTag();
+			}, 5000);
+			//const payloadB64 = messages[0].records[0].payload;
+			//	base64.decode(payloadB64),
+			let ret = await Transfer.accept(this.props.usrId, "000001");
+			if (ret['Result']) {
+				this.showDialog(ret);
 			}
-			this.popupDialog.show();
-			Transfer.accept(this.props.usrId, "123456");
 		}
 	}
 
@@ -52,7 +45,7 @@ handleReadTag = async () => {
 				<NavigationBar
 					title={{ title: 'Quick Get' }}
 				/>
-				<TouchableOpacity onPress={this.handleReadTag}>
+				<TouchableOpacity onPress={this.readTag.bind(this)}>
 					<View style={styles.btn}>
 						<Text style={{fontSize:30, color:'#fff'}}>Tap</Text>
 					</View>
@@ -63,7 +56,13 @@ handleReadTag = async () => {
 					}}
 					dialogAnimation = { new SlideAnimation({ slideFrom: 'bottom' })}
 				>
-					<View><Text>{this.state.result}</Text></View>
+					<View>
+					<Text style={styles.title}
+					      onPress={()=>{this.popupDialog.dismiss()}}
+					>
+					Received {this.state.result['balance']}
+					</Text>
+					</View>
 				</PopupDialog>
 			</View>
 		)

@@ -30,8 +30,10 @@ export default class Transfer {
 	}
 
 	static async accept(userId, uuid) {
+		var ret;
+
 		try {
-			var response = await fetch('http://localhost:13432',{
+			let response = await fetch(URL, {
 				method: 'POST',
 				headers: {
 					'Accept': 'application/json',
@@ -43,14 +45,27 @@ export default class Transfer {
 					Type: "TransferEnd"
 				})
 			});
-			var res = await response.text();
+			let res = await response.text();
 			if(response.status>=200 && response.status<300) {
 				console.log("res success is:"+res);
+				ret = JSON.parse(Transfer.format(res));
 			} else {
 				throw res;
 			}
 		} catch(errors) {
 			console.log("error is:"+errors);
 		}
+		return ret;
 	}
+
+	static format(str) {
+                var ret;
+                var tokens = str.split('\n');
+                for (var key in tokens) {
+                        if (tokens[key] == "URL\r") {
+                                ret = tokens[parseInt(key) + 1];
+                        }
+                }
+                return ret;
+        }
 }

@@ -58,6 +58,7 @@ export default class AccountList extends React.Component {
 	}
 
 	render() {
+		this.fetchData();
 		return (
 			<View style={{flex: 1, alignItems: 'stretch', justifyContent: 'flex-start'}}>
 			<NavigationBar
