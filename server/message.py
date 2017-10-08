@@ -3,9 +3,12 @@ import os
 from transaction import transaction
 from dbInstance import mongodb
 import sys
+
+# This class will parase messge in string into json and do relevent analysis to it
 class message(object):
+    # init message in string and client as socket connection, transaction list as dictionary
     def __init__(self, message,client, translst):
-        print('nihaoamessage:', message)
+        print('message:', message)
         self.__transferLst = translst
         self.__userlst = None
         self.__message = message
@@ -24,23 +27,29 @@ class message(object):
             self.__user =('user'+ self.__jsonpara['UserId']).lower()
             self.__type = self.__jsonpara['Type']
         except:
+            # lock userid and type ,then it is considered as admain model
             print('message user name error')
             self.__user = 'admain'
             self.__type = 'admain'
         self.__userInstance = None
-
+    
+    # Return the type of message 
     def get_type(self):
         return self.__type
 
+    # Return the parased json message 
     def get_jsonpara(self):
         return self.__jsonpara
-
+    
+    # return the userid
     def get_user(self):
         return self.__user
 
+    # return the user list
     def set_userlst(self, userlst):
         self.__userlst = userlst
 
+    # return the user instance
     def set_userInstance(self, user):
         self.__userInstance = user
 
@@ -51,10 +60,11 @@ class message(object):
         content += 'URL\r\n'
         content += message
         return content
-
+    
+    # Analysis the message according to it type
     def run(self):
         print('run in')
-        # if user need to add new
+        # if user need to add new card to database
         if self.__type == 'CardRegister':
             cardNumber = self.__jsonpara['CardInfo']['CardNumber']
             holderName = self.__jsonpara['CardInfo']['HolderName']
@@ -62,10 +72,10 @@ class message(object):
             csv =  self.__jsonpara['CardInfo']['CSV']
             self.__client.sendall(bytes(self.add_head(json.dumps({'Result':True})), encoding="utf8"))
             self.__client.close()
-            print("sended")
             self.__dbinstance.createUser(self.__user)
             self.__dbinstance.userInfomationGenerate(self.__user,cardNumber,holderName,expireDate,csv)
             print('Saved')
+        # if User need to get card information from database
         elif self.__type == 'GetCardInfo':
             print('getCardInfo')
             filename = os.getcwd()+ '/' + self.__user + '.json'
@@ -73,6 +83,7 @@ class message(object):
             message = self.__dbinstance.get_card(self.__user)
             self.__client.sendall(bytes(self.add_head(json.dumps(message)), encoding="utf8"))
             self.__client.close()
+        # if user need to start a transaction
         elif self.__type == 'TransferStart':
             uuid =  self.__jsonpara['Uuid']
             amount = self.__jsonpara['Amount']
@@ -97,6 +108,7 @@ class message(object):
                 self.__client.close()
                 print('statt sended')
                # transinstance.run()
+         # if user need to end a transaction
         elif self.__type == 'TransferEnd':
             uuid = self.__jsonpara['Uuid']
             try:
@@ -114,6 +126,3 @@ class message(object):
             except:
                 self.__client.sendall(bytes(self.add_head(json.dumps({'Result':False})), encoding="utf8"))
                 self.__client.close()
-#            self.__client.sendall(bytes(self.add_head(json.dumps({'Result':True})), encoding="utf8"))
-
-        #self.__client.close()
