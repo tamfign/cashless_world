@@ -137,10 +137,10 @@ repositories {
 }
 
 dependencies {
+    compile project(':nfc-ndef-react-native')
     compile project(':react-native-linear-gradient')
     compile project(':react-native-fbsdk')
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
-    compile project(':nfc-react-native')
     compile project(':react-native-vector-icons')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"

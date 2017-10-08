@@ -1,10 +1,10 @@
 rootProject.name = 'client_end'
+include ':nfc-ndef-react-native'
+project(':nfc-ndef-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/nfc-ndef-react-native/android')
 include ':react-native-linear-gradient'
 project(':react-native-linear-gradient').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-linear-gradient/android')
 include ':react-native-fbsdk'
 project(':react-native-fbsdk').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fbsdk/android')
-include ':nfc-react-native'
-project(':nfc-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/nfc-react-native/android')
 include ':react-native-vector-icons'
 project(':react-native-vector-icons').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-vector-icons/android')
 

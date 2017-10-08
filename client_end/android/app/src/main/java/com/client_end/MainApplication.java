@@ -4,9 +4,9 @@ import android.app.Application;
 
 import com.facebook.FacebookSdk;
 import com.facebook.react.ReactApplication;
+import es.tiarg.nfcndefreactnative.NfcNdefReactNativePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
-import es.tiarg.nfcreactnative.NfcReactNativePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -36,9 +36,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new NfcNdefReactNativePackage(),
             new LinearGradientPackage(),
             new FBSDKPackage(mCallbackManager),
-            new NfcReactNativePackage(),
             new VectorIconsPackage()
       );
     }
